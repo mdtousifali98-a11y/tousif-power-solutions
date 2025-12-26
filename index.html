@@ -2,77 +2,107 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M/S Tousif Power Solutions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Fonts & Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
-:root{
-  --blue:#0b5ed7;
-  --green:#198754;
-  --dark:#0f172a;
-  --accent:#f59e0b;
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:Poppins,sans-serif;color:#111}
-a{text-decoration:none}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Poppins,sans-serif;background:#fff;color:#111}
+a{text-decoration:none;color:inherit}
 
-/* Header */
+/* ===== Header ===== */
 header{
-  background:linear-gradient(90deg,var(--blue),var(--green));
+  background:linear-gradient(90deg,#0b5ed7,#198754);
   color:#fff;
   position:sticky;
   top:0;
+  z-index:1000;
 }
 .nav{
   max-width:1200px;
   margin:auto;
   display:flex;
+  align-items:center;
   justify-content:space-between;
-  padding:14px;
+  padding:12px 16px;
 }
-.menu a{margin-left:15px;color:#fff}
+.logo{font-weight:700;font-size:18px}
 
-/* Hero */
+/* 3 Line Menu */
+.menu-btn{
+  font-size:24px;
+  cursor:pointer;
+  display:none;
+}
+.menu{
+  display:flex;
+  gap:16px;
+}
+.menu a{font-weight:500}
+
+/* Mobile Menu */
+@media(max-width:768px){
+  .menu-btn{display:block}
+  .menu{
+    position:absolute;
+    top:60px;
+    right:0;
+    background:#0b5ed7;
+    flex-direction:column;
+    width:200px;
+    padding:15px;
+    display:none;
+  }
+  .menu.show{display:flex}
+}
+
+/* ===== Sections ===== */
+.section{padding:60px 16px}
+.wrap{max-width:1200px;margin:auto}
 .hero{
-  padding:70px 16px;
   background:linear-gradient(135deg,#eef2ff,#ecfeff);
 }
-.wrap{max-width:1200px;margin:auto}
-.hero h1{font-size:38px}
-.badge{
-  background:var(--accent);
-  padding:6px 12px;
-  border-radius:20px;
-  display:inline-block;
-}
+.hero h1{font-size:36px;margin-bottom:10px}
 .btn{
   display:inline-block;
-  margin-top:15px;
-  padding:12px 16px;
-  border-radius:10px;
+  background:#0b5ed7;
   color:#fff;
-  background:var(--blue);
+  padding:12px 18px;
+  border-radius:10px;
+  margin-right:10px;
 }
-.btn.wh{background:var(--green)}
+.btn.alt{background:#198754}
 
-/* Section */
-.section{padding:60px 16px}
+/* Grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+}
+.card{
+  background:#fff;
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+.card i{font-size:28px;color:#0b5ed7;margin-bottom:8px}
 
 /* ===== Gallery ===== */
 .gallery{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:15px;
-  margin-top:25px;
+  margin-top:20px;
 }
 .gallery img{
   width:100%;
   height:200px;
   object-fit:cover;
-  border-radius:12px;
+  border-radius:10px;
   cursor:pointer;
   box-shadow:0 6px 15px rgba(0,0,0,.15);
   transition:.3s;
@@ -85,16 +115,18 @@ header{
 .popup{
   display:none;
   position:fixed;
-  inset:0;
+  top:0;left:0;
+  width:100%;
+  height:100%;
   background:rgba(0,0,0,.9);
-  z-index:9999;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
+  z-index:2000;
 }
 .popup img{
   max-width:90%;
   max-height:90%;
-  border-radius:12px;
+  border-radius:10px;
 }
 .popup span{
   position:absolute;
@@ -107,16 +139,10 @@ header{
 
 /* Footer */
 footer{
-  background:var(--dark);
+  background:#0f172a;
   color:#cbd5e1;
   padding:20px;
   text-align:center;
-}
-
-/* Mobile */
-@media(max-width:600px){
-  .hero h1{font-size:28px}
-  .gallery img{height:160px}
 }
 </style>
 </head>
@@ -125,41 +151,53 @@ footer{
 
 <header>
   <div class="nav">
-    <b>M/S Tousif Power Solutions</b>
-    <div class="menu">
-      <a href="#projects">Gallery</a>
+    <div class="logo">M/S Tousif Power Solutions</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="menu" id="menu">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
 </header>
 
-<section class="hero">
+<!-- Home -->
+<section id="home" class="section hero">
   <div class="wrap">
-    <span class="badge">Professional Electrical Contractor</span>
     <h1>Complete Electrical & Power Solutions</h1>
-    <p>HT/LT, Transformer, Wiring & Maintenance</p>
-
-    <a class="btn" href="tel:8250687140">
-      <i class="fa fa-phone"></i> Call Now
-    </a>
-    <a class="btn wh" href="https://wa.me/918250687140">
-      <i class="fa-brands fa-whatsapp"></i> WhatsApp
-    </a>
+    <p>HT / LT Electrical Work, Transformer, Wiring & Maintenance</p><br>
+    <a class="btn" href="tel:8250687140">Call Now</a>
+    <a class="btn alt" href="https://wa.me/918250687140">WhatsApp</a>
   </div>
 </section>
 
-<section id="projects" class="section">
+<!-- Services -->
+<section id="services" class="section">
   <div class="wrap">
-    <h2>Projects / Gallery</h2>
-
-    <div class="gallery">
-      <img src="images/1.jfif" onclick="openImg(this.src)">
-      <img src="images/2.jfif" onclick="openImg(this.src)">
-      <img src="images/3.jfif" onclick="openImg(this.src)">
+    <h2>Our Services</h2><br>
+    <div class="grid">
+      <div class="card"><i class="fa fa-bolt"></i><h3>HT Work</h3></div>
+      <div class="card"><i class="fa fa-plug"></i><h3>LT Work</h3></div>
+      <div class="card"><i class="fa fa-charging-station"></i><h3>Transformer</h3></div>
+      <div class="card"><i class="fa fa-house"></i><h3>House Wiring</h3></div>
     </div>
   </div>
 </section>
 
+<!-- Projects -->
+<section id="projects" class="section">
+  <div class="wrap">
+    <h2>Projects / Gallery</h2>
+    <div class="gallery">
+      <img src="images/1.jfif" onclick="openPopup(this.src)">
+      <img src="images/2.jfif" onclick="openPopup(this.src)">
+      <img src="images/3.jfif" onclick="openPopup(this.src)">
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
 <section id="contact" class="section">
   <div class="wrap">
     <h2>Contact</h2>
@@ -170,21 +208,24 @@ footer{
 </section>
 
 <footer>
-  © 2025 M/S Tousif Power Solutions
+© 2025 M/S Tousif Power Solutions
 </footer>
 
 <!-- Popup -->
 <div class="popup" id="popup">
-  <span onclick="closeImg()">×</span>
+  <span onclick="closePopup()">×</span>
   <img id="popupImg">
 </div>
 
 <script>
-function openImg(src){
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("show");
+}
+function openPopup(src){
   document.getElementById("popup").style.display="flex";
   document.getElementById("popupImg").src=src;
 }
-function closeImg(){
+function closePopup(){
   document.getElementById("popup").style.display="none";
 }
 </script>
