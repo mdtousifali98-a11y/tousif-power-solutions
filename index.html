@@ -1,104 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M/S Tousif Power Solutions</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
 <style>
 :root{
-  --blue:#0b5ed7; --green:#198754; --dark:#0f172a; --light:#f8fafc; --accent:#f59e0b;
+  --blue:#0b5ed7;
+  --green:#198754;
+  --dark:#0f172a;
+  --accent:#f59e0b;
 }
-*{box-sizing:border-box} body{margin:0;font-family:Poppins,system-ui;background:#fff;color:#111}
-a{text-decoration:none;color:inherit}
-header{position:sticky;top:0;z-index:9;background:linear-gradient(90deg,var(--blue),var(--green));color:#fff}
-.nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
-.logo{font-weight:700;letter-spacing:.5px}
-.menu a{margin:0 10px;font-weight:500}
-.hero{background:linear-gradient(135deg,#eef2ff,#ecfeff);padding:70px 16px}
-.hero .wrap{max-width:1200px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
-.hero h1{font-size:40px;margin:0}
-.badge{display:inline-block;background:var(--accent);color:#111;padding:6px 10px;border-radius:999px;font-size:12px;margin-bottom:10px}
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;padding:12px 16px;border-radius:10px;margin-right:10px}
-.btn.alt{background:var(--green)}
-.card{background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
-.section{padding:60px 16px}
+*{box-sizing:border-box}
+body{margin:0;font-family:Poppins,sans-serif;color:#111}
+a{text-decoration:none}
+
+/* Header */
+header{
+  background:linear-gradient(90deg,var(--blue),var(--green));
+  color:#fff;
+  position:sticky;
+  top:0;
+}
+.nav{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  padding:14px;
+}
+.menu a{margin-left:15px;color:#fff}
+
+/* Hero */
+.hero{
+  padding:70px 16px;
+  background:linear-gradient(135deg,#eef2ff,#ecfeff);
+}
 .wrap{max-width:1200px;margin:auto}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.item{padding:20px}
-.item i{font-size:28px;color:var(--blue)}
-.item h3{margin:10px 0 6px}
-.ai i{color:var(--green)}
-footer{background:var(--dark);color:#cbd5e1}
-footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px}
-.whatsapp{position:fixed;right:16px;bottom:16px;background:#25D366;color:#fff;border-radius:50%;width:56px;height:56px;display:grid;place-items:center;font-size:28px}
-@media(max-width:900px){
-  .hero .wrap{grid-template-columns:1fr}
-  .grid{grid-template-columns:1fr}
-  .menu{display:none}
+.hero h1{font-size:38px}
+.badge{
+  background:var(--accent);
+  padding:6px 12px;
+  border-radius:20px;
+  display:inline-block;
+}
+.btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 16px;
+  border-radius:10px;
+  color:#fff;
+  background:var(--blue);
+}
+.btn.wh{background:var(--green)}
+
+/* Section */
+.section{padding:60px 16px}
+
+/* ===== Gallery ===== */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  margin-top:25px;
+}
+.gallery img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:12px;
+  cursor:pointer;
+  box-shadow:0 6px 15px rgba(0,0,0,.15);
+  transition:.3s;
+}
+.gallery img:hover{
+  transform:scale(1.05);
+}
+
+/* ===== Popup ===== */
+.popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  z-index:9999;
+  justify-content:center;
+  align-items:center;
+}
+.popup img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:12px;
+}
+.popup span{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:40px;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* Footer */
+footer{
+  background:var(--dark);
+  color:#cbd5e1;
+  padding:20px;
+  text-align:center;
+}
+
+/* Mobile */
+@media(max-width:600px){
+  .hero h1{font-size:28px}
+  .gallery img{height:160px}
 }
 </style>
 </head>
+
 <body>
 
 <header>
   <div class="nav">
-    <div class="logo">M/S Tousif Power Solutions</div>
+    <b>M/S Tousif Power Solutions</b>
     <div class="menu">
-      <a href="#home">Home</a><a href="#services">Services</a><a href="#ai">AI Services</a>
-      <a href="#projects">Projects</a><a href="#about">About</a><a href="#contact">Contact</a>
+      <a href="#projects">Gallery</a>
+      <a href="#contact">Contact</a>
     </div>
   </div>
 </header>
 
-<section id="home" class="hero">
+<section class="hero">
   <div class="wrap">
-    <div>
-      <span class="badge">Professional Electrical Contractor</span>
-      <h1>Complete Electrical & Power Solutions</h1>
-      <p>সম্পূর্ণ বৈদ্যুতিক ও পাওয়ার সমাধান — HT/LT, Transformer, Wiring & Maintenance</p>
-      <a class="btn" href="tel:8250687140"><i class="fa fa-phone"></i> Call Now</a>
-      <a class="btn alt" href="https://wa.me/918250687140"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-    </div>
-    <div class="card item">
-      <h3>Why Choose Us</h3>
-      <ul>
-        <li>Experienced & Reliable</li>
-        <li>Safety First Approach</li>
-        <li>On-time Delivery</li>
-        <li>Malda & Nearby Areas</li>
-      </ul>
-    </div>
-  </div>
-</section>
+    <span class="badge">Professional Electrical Contractor</span>
+    <h1>Complete Electrical & Power Solutions</h1>
+    <p>HT/LT, Transformer, Wiring & Maintenance</p>
 
-<section id="services" class="section">
-  <div class="wrap">
-    <h2>Our Services | আমাদের সেবা</h2>
-    <div class="grid">
-      <div class="card item"><i class="fa fa-bolt"></i><h3>HT Electrical Work</h3><p>33kV / 11kV Substation & Line Work</p></div>
-      <div class="card item"><i class="fa fa-plug"></i><h3>LT Electrical Work</h3><p>Industrial & Commercial Wiring</p></div>
-      <div class="card item"><i class="fa fa-charging-station"></i><h3>Transformer</h3><p>Installation, Testing & Maintenance</p></div>
-      <div class="card item"><i class="fa fa-server"></i><h3>Panel & Substation</h3><p>HT/LT Panels & Control Systems</p></div>
-      <div class="card item"><i class="fa fa-house"></i><h3>House/Shop Wiring</h3><p>Residential & Commercial</p></div>
-      <div class="card item"><i class="fa fa-screwdriver-wrench"></i><h3>Maintenance</h3><p>Repair & AMC Services</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="ai" class="section">
-  <div class="wrap">
-    <h2>AI Services</h2>
-    <div class="grid ai">
-      <div class="card item"><i class="fa fa-chart-line"></i><h3>AI Excel Automation</h3></div>
-      <div class="card item"><i class="fa fa-file-invoice"></i><h3>Auto Bill / Estimate</h3></div>
-      <div class="card item"><i class="fa fa-robot"></i><h3>WhatsApp Auto System</h3></div>
-      <div class="card item"><i class="fa fa-clipboard"></i><h3>Smart Reports</h3></div>
-      <div class="card item"><i class="fa fa-pen-to-square"></i><h3>Online Form Support</h3></div>
-    </div>
+    <a class="btn" href="tel:8250687140">
+      <i class="fa fa-phone"></i> Call Now
+    </a>
+    <a class="btn wh" href="https://wa.me/918250687140">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp
+    </a>
   </div>
 </section>
 
@@ -107,19 +153,10 @@ footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px}
     <h2>Projects / Gallery</h2>
 
     <div class="gallery">
-      <img src="images/1.jfif" alt="Electrical Work 1">
-      <img src="images/2.jfif" alt="Electrical Work 2">
-      <img src="images/3.jfif" alt="Electrical Work 3">
+      <img src="images/1.jfif" onclick="openImg(this.src)">
+      <img src="images/2.jfif" onclick="openImg(this.src)">
+      <img src="images/3.jfif" onclick="openImg(this.src)">
     </div>
-
-  </div>
-</section>
-
-<section id="about" class="section">
-  <div class="wrap">
-    <h2>About Us</h2>
-    <p><b>M/S Tousif Power Solutions</b> — Trusted electrical partner for HT/LT works, transformer & wiring.  
-    ভবিষ্যৎ লক্ষ্য: A-Class Electrical Contractor License.</p>
   </div>
 </section>
 
@@ -133,13 +170,24 @@ footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px}
 </section>
 
 <footer>
-  <div class="wrap">
-    <div>© 2025 M/S Tousif Power Solutions</div>
-    <div>Electrical Services</div>
-    <div>AI Services</div>
-  </div>
+  © 2025 M/S Tousif Power Solutions
 </footer>
 
-<a class="whatsapp" href="https://wa.me/918250687140"><i class="fa-brands fa-whatsapp"></i></a>
+<!-- Popup -->
+<div class="popup" id="popup">
+  <span onclick="closeImg()">×</span>
+  <img id="popupImg">
+</div>
+
+<script>
+function openImg(src){
+  document.getElementById("popup").style.display="flex";
+  document.getElementById("popupImg").src=src;
+}
+function closeImg(){
+  document.getElementById("popup").style.display="none";
+}
+</script>
+
 </body>
 </html>
