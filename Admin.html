@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Invoice Generator</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body{font-family:Poppins;padding:20px}
+input{margin:5px;padding:8px}
+button{padding:10px;background:blue;color:white;border:none}
+</style>
+</head>
+
+<body>
+
+<h2>Bill Generator</h2>
+
+Customer Name <input id="cname"><br>
+Item <input id="item">
+Qty <input id="qty" type="number">
+Price <input id="price" type="number">
+<button onclick="addItem()">Add</button>
+
+<table border="1" id="table">
+<tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr>
+</table>
+
+<button onclick="generatePDF()">Generate PDF</button>
+
+<script>
+let total=0;
+
+function addItem(){
+let item=document.getElementById("item").value;
+let qty=document.getElementById("qty").value;
+let price=document.getElementById("price").value;
+
+let sub=qty*price;
+total+=sub;
+
+let row=`<tr><td>${item}</td><td>${qty}</td><td>${price}</td><td>${sub}</td></tr>`;
+document.getElementById("table").innerHTML+=row;
+}
+
+function generatePDF(){
+
+const { jsPDF } = window.jspdf;
+let doc=new jsPDF();
+
+doc.text("M/S Tousif Power Solutions",20,20);
+doc.text("Customer: "+document.getElementById("cname").value,20,40);
+doc.text("Total: ₹"+total,20,60);
+
+doc.save("Invoice.pdf");
+}
+</script>
+
+</body>
+</html>
