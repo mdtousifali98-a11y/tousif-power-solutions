@@ -2,148 +2,158 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <meta name="google-site-verification" content="hKjTggnUzInfl0KkHU22HHqbHi_kLfOIeGXWUlCK-Uw" />
 <title>M/S Tousif Power Solutions</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Fonts & Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Poppins,sans-serif;background:#fff;color:#111}
-a{text-decoration:none;color:inherit}
+body{font-family:Poppins,sans-serif}
 
-/* ===== Header ===== */
+/* Animation */
+.fade{opacity:0;transform:translateY(40px);transition:1s}
+.fade.show{opacity:1;transform:translateY(0)}
+
+/* Header */
 header{
-  background:linear-gradient(90deg,#0b5ed7,#198754);
-  color:#fff;
-  position:sticky;
-  top:0;
-  z-index:1000;
+background:linear-gradient(90deg,#0b5ed7,#198754);
+color:white;
+position:sticky;
+top:0;
+z-index:1000;
 }
 .nav{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:12px 16px;
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+padding:15px;
 }
-.logo{font-weight:700;font-size:18px}
+.logo{font-weight:700}
 
-/* 3 Line Menu */
-.menu-btn{
-  font-size:24px;
-  cursor:pointer;
-  display:none;
-}
-.menu{
-  display:flex;
-  gap:16px;
-}
-.menu a{font-weight:500}
+.menu-btn{font-size:24px;cursor:pointer;display:none}
+.menu{display:flex;gap:20px}
+.menu a{color:white}
 
-/* Mobile Menu */
 @media(max-width:768px){
-  .menu-btn{display:block}
-  .menu{
-    position:absolute;
-    top:60px;
-    right:0;
-    background:#0b5ed7;
-    flex-direction:column;
-    width:200px;
-    padding:15px;
-    display:none;
-  }
-  .menu.show{display:flex}
+.menu-btn{display:block}
+.menu{
+position:absolute;
+top:60px;
+right:0;
+background:#0b5ed7;
+flex-direction:column;
+width:200px;
+display:none;
+padding:15px;
+}
+.menu.show{display:flex}
 }
 
-/* ===== Sections ===== */
-.section{padding:60px 16px}
-.wrap{max-width:1200px;margin:auto}
+/* Hero */
 .hero{
-  background:linear-gradient(135deg,#eef2ff,#ecfeff);
+background:linear-gradient(135deg,#0b5ed7,#198754);
+color:white;
+text-align:center;
+padding:80px 20px;
 }
-.hero h1{font-size:36px;margin-bottom:10px}
-.btn{
-  display:inline-block;
-  background:#0b5ed7;
-  color:#fff;
-  padding:12px 18px;
-  border-radius:10px;
-  margin-right:10px;
-}
-.btn.alt{background:#198754}
 
-/* Grid */
+/* Button */
+.btn{
+display:inline-block;
+background:white;
+color:#0b5ed7;
+padding:12px 20px;
+border-radius:10px;
+margin:10px;
+font-weight:600;
+}
+.btn.alt{background:#25D366;color:white}
+
+/* Section */
+.section{padding:60px 20px}
+.wrap{max-width:1200px;margin:auto}
+
+/* Cards */
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:16px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
 }
 .card{
-  background:#fff;
-  padding:20px;
-  border-radius:16px;
-  box-shadow:0 8px 20px rgba(0,0,0,.1);
-}
-.card i{font-size:28px;color:#0b5ed7;margin-bottom:8px}
-
-/* ===== Gallery ===== */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
-  margin-top:20px;
-}
-.gallery img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-  border-radius:10px;
-  cursor:pointer;
-  box-shadow:0 6px 15px rgba(0,0,0,.15);
-  transition:.3s;
-}
-.gallery img:hover{
-  transform:scale(1.05);
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+text-align:center;
 }
 
-/* ===== Popup ===== */
-.popup{
-  display:none;
-  position:fixed;
-  top:0;left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,.9);
-  align-items:center;
-  justify-content:center;
-  z-index:2000;
+/* Sliding Gallery */
+.slider{
+overflow:hidden;
 }
-.popup img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:10px;
+.slide-track{
+display:flex;
+animation:scroll 20s linear infinite;
 }
-.popup span{
-  position:absolute;
-  top:20px;
-  right:30px;
-  font-size:40px;
-  color:#fff;
-  cursor:pointer;
+.slide-track img{
+width:250px;
+height:180px;
+margin:10px;
+border-radius:10px;
+object-fit:cover;
 }
 
-/* Footer */
+@keyframes scroll{
+0%{transform:translateX(0)}
+100%{transform:translateX(-100%)}
+}
+
+/* Booking Form */
+form{
+display:grid;
+gap:15px;
+max-width:500px;
+}
+input,textarea{
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+/* Review */
+.review{
+background:#f8fafc;
+padding:20px;
+border-radius:12px;
+}
+
+/* Social */
+.social{text-align:center;margin-top:20px}
+.social a{font-size:25px;margin:0 12px;color:#0b5ed7}
+
+/* Floating WhatsApp */
+.float{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+width:60px;
+height:60px;
+border-radius:50%;
+text-align:center;
+font-size:30px;
+line-height:60px;
+}
+
 footer{
-  background:#0f172a;
-  color:#cbd5e1;
-  padding:20px;
-  text-align:center;
+background:#0f172a;
+color:#cbd5e1;
+padding:20px;
+text-align:center;
 }
 </style>
 </head>
@@ -151,86 +161,147 @@ footer{
 <body>
 
 <header>
-  <div class="nav">
-    <div class="logo">M/S Tousif Power Solutions</div>
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
-    <div class="menu" id="menu">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
+<div class="nav">
+<div class="logo">M/S Tousif Power Solutions</div>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<div class="menu" id="menu">
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#projects">Projects</a>
+<a href="#booking">Booking</a>
+<a href="#reviews">Reviews</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
 </header>
 
-<!-- Home -->
-<section id="home" class="section hero">
-  <div class="wrap">
-    <h1>Complete Electrical & Power Solutions</h1>
-    <p>HT / LT Electrical Work, Transformer, Wiring & Maintenance</p><br>
-    <a class="btn" href="tel:8250687140">Call Now</a>
-    <a class="btn alt" href="https://wa.me/918250687140">WhatsApp</a>
-  </div>
+<!-- Hero -->
+<section id="home" class="hero fade">
+<h1>Complete Electrical & Power Solutions</h1>
+<p>HT / LT Electrical Work, Transformer, Wiring & Maintenance</p>
+
+<a class="btn" href="tel:8250687140">Call Now</a>
+
+<a class="btn alt"
+href="https://wa.me/918250687140?text=Hello%20I%20need%20Electrical%20Service">
+WhatsApp
+</a>
 </section>
 
 <!-- Services -->
-<section id="services" class="section">
-  <div class="wrap">
-    <h2>Our Services</h2><br>
-    <div class="grid">
-      <div class="card"><i class="fa fa-bolt"></i><h3>HT Work</h3></div>
-      <div class="card"><i class="fa fa-plug"></i><h3>LT Work</h3></div>
-      <div class="card"><i class="fa fa-charging-station"></i><h3>Transformer</h3></div>
-      <div class="card"><i class="fa fa-house"></i><h3>House Wiring</h3></div>
-    </div>
-  </div>
+<section id="services" class="section fade">
+<div class="wrap">
+<h2>Our Services</h2><br>
+
+<div class="grid">
+<div class="card"><i class="fa fa-bolt"></i><h3>HT Work</h3></div>
+<div class="card"><i class="fa fa-plug"></i><h3>LT Work</h3></div>
+<div class="card"><i class="fa fa-charging-station"></i><h3>Transformer</h3></div>
+<div class="card"><i class="fa fa-house"></i><h3>House Wiring</h3></div>
+</div>
+
+</div>
 </section>
 
-<!-- Projects -->
-<section id="projects" class="section">
-  <div class="wrap">
-    <h2>Projects / Gallery</h2>
-    <div class="gallery">
-      <img src="images/1.jfif" onclick="openPopup(this.src)">
-      <img src="images/2.jfif" onclick="openPopup(this.src)">
-      <img src="images/3.jfif" onclick="openPopup(this.src)">
-       <img src="images/4.png" onclick="openPopup(this.src)">
-    </div>
-  </div>
+<!-- Sliding Gallery -->
+<section id="projects" class="section fade">
+<div class="wrap">
+<h2>Projects</h2>
+
+<div class="slider">
+<div class="slide-track">
+
+<img src="images/1.jfif">
+<img src="images/2.jfif">
+<img src="images/3.jfif">
+<img src="images/1.jfif">
+<img src="images/2.jfif">
+<img src="images/3.jfif">
+
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- Booking Form -->
+<section id="booking" class="section fade">
+<div class="wrap">
+<h2>Online Booking</h2>
+
+<form action="https://formsubmit.co/mdtousifali92@gmail.com" method="POST">
+
+<input type="text" name="Name" placeholder="Your Name" required>
+<input type="tel" name="Mobile" placeholder="Mobile Number" required>
+<textarea name="Service" placeholder="Service Details"></textarea>
+
+<button class="btn">Submit Booking</button>
+
+</form>
+</div>
+</section>
+
+<!-- Reviews -->
+<section id="reviews" class="section fade">
+<div class="wrap">
+<h2>Customer Reviews</h2><br>
+
+<div class="grid">
+<div class="review">
+⭐⭐⭐⭐⭐ <br>
+"Very good electrical service"
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐ <br>
+"Fast and reliable work"
+</div>
+
+</div>
+
+</div>
 </section>
 
 <!-- Contact -->
-<section id="contact" class="section">
-  <div class="wrap">
-    <h2>Contact</h2>
-    <p>📍 Malda, West Bengal</p>
-    <p>📞 8250687140</p>
-    <p>✉️ mdtousifali98@gmail.com</p>
-  </div>
+<section id="contact" class="section fade">
+<div class="wrap">
+<h2>Contact</h2>
+<p>📍 Malda, West Bengal</p>
+<p>📞 8250687140</p>
+<p>✉️ mdtousifali92@gmail.com</p>
+
+<div class="social">
+<a href="https://www.facebook.com/share/1C9yvEp9tA/"><i class="fab fa-facebook"></i></a>
+<a href="https://www.instagram.com/x___boy___t_o_u_s_i_f___143"><i class="fab fa-instagram"></i></a>
+<a href="https://youtube.com/@aisecretsbangla"><i class="fab fa-youtube"></i></a>
+</div>
+
+</div>
 </section>
 
 <footer>
 © 2026 M/S Tousif Power Solutions
 </footer>
 
-<!-- Popup -->
-<div class="popup" id="popup">
-  <span onclick="closePopup()">×</span>
-  <img id="popupImg">
-</div>
+<a href="https://wa.me/918250687140" class="float">
+<i class="fab fa-whatsapp"></i>
+</a>
 
 <script>
 function toggleMenu(){
-  document.getElementById("menu").classList.toggle("show");
+document.getElementById("menu").classList.toggle("show");
 }
-function openPopup(src){
-  document.getElementById("popup").style.display="flex";
-  document.getElementById("popupImg").src=src;
+
+/* Animation Scroll */
+const faders=document.querySelectorAll(".fade");
+window.addEventListener("scroll",()=>{
+faders.forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight-50){
+el.classList.add("show");
 }
-function closePopup(){
-  document.getElementById("popup").style.display="none";
-}
+})
+})
 </script>
 
 </body>
-</html>
+                            </html>
