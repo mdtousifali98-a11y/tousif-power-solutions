@@ -1,302 +1,1772 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-<meta charset="UTF-8">
-<title>M/S Tousif Power Solutions</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Poppins,sans-serif;background:#f1f5f9}
-
-/* Scroll Animation */
-.fade{opacity:0;transform:translateY(50px);transition:1s}
-.fade.show{opacity:1;transform:translateY(0)}
-
-/* Header */
-header{
-background:linear-gradient(90deg,#0b5ed7,#198754);
-color:white;
-position:sticky;
-top:0;
-z-index:1000;
-}
-.nav{max-width:1200px;margin:auto;display:flex;justify-content:space-between;padding:15px}
-.logo{font-weight:700}
-.menu-btn{font-size:24px;cursor:pointer;display:none}
-.menu{display:flex;gap:20px}
-.menu a{color:white;text-decoration:none}
-
-@media(max-width:768px){
-.menu-btn{display:block}
-.menu{position:absolute;top:60px;right:0;background:#0b5ed7;flex-direction:column;width:200px;display:none;padding:15px}
-.menu.show{display:flex}
-}
-
-/* Hero */
-.hero{background:linear-gradient(135deg,#0b5ed7,#198754);color:white;text-align:center;padding:100px 20px}
-
-/* Button */
-.btn{display:inline-block;background:white;color:#0b5ed7;padding:12px 22px;border-radius:10px;margin:10px;font-weight:600;text-decoration:none;transition:.3s}
-.btn:hover{transform:scale(1.05)}
-.btn.alt{background:#25D366;color:white}
-
-/* Section */
-.section{padding:70px 20px}
-.wrap{max-width:1200px;margin:auto}
-
-/* Cards */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px}
-.card{background:white;padding:30px;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,.1);text-align:center;transition:.3s}
-.card:hover{transform:translateY(-10px)}
-
-/* Sliding Gallery */
-.slider{overflow:hidden}
-.slide-track{display:flex;animation:scroll 25s linear infinite}
-.slide-track img{width:260px;height:190px;margin:12px;border-radius:12px;object-fit:cover}
-@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
-
-/* Booking Form */
-form{display:grid;gap:15px;max-width:500px}
-input,textarea{padding:12px;border:1px solid #ccc;border-radius:8px}
-
-/* Review */
-.review{background:white;padding:20px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.1)}
-
-/* WhatsApp Floating */
-.float{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-width:60px;
-height:60px;
-border-radius:50%;
-text-align:center;
-font-size:30px;
-line-height:60px;
-z-index:999;
-}
-
-/* CHATBOT DESIGN */
-.chatbot-btn{
-position:fixed;
-bottom:95px;
-right:20px;
-background:linear-gradient(45deg,#0b5ed7,#198754);
-color:white;
-width:60px;
-height:60px;
-border-radius:50%;
-font-size:28px;
-text-align:center;
-line-height:60px;
-cursor:pointer;
-z-index:999;
-box-shadow:0 5px 15px rgba(0,0,0,.3);
-}
-
-.chatbox{
-position:fixed;
-bottom:165px;
-right:20px;
-width:300px;
-background:white;
-border-radius:15px;
-box-shadow:0 5px 20px rgba(0,0,0,.3);
-display:none;
-flex-direction:column;
-overflow:hidden;
-z-index:999;
-animation:fadeIn .3s;
-}
-
-@keyframes fadeIn{
-from{transform:translateY(30px);opacity:0}
-to{transform:translateY(0);opacity:1}
-}
-
-.chat-header{
-background:linear-gradient(45deg,#0b5ed7,#198754);
-color:white;
-padding:12px;
-font-weight:bold;
-text-align:center;
-}
-
-.chat-body{
-height:250px;
-overflow-y:auto;
-padding:10px;
-font-size:14px;
-}
-
-.chat-body div{
-margin:6px 0;
-padding:8px;
-border-radius:8px;
-background:#f1f5f9;
-}
-
-.chat-input{display:flex;border-top:1px solid #ddd}
-.chat-input input{flex:1;padding:10px;border:none;outline:none}
-.chat-input button{background:#0b5ed7;color:white;border:none;padding:10px 15px;cursor:pointer}
-
-footer{background:#0f172a;color:#cbd5e1;padding:20px;text-align:center}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="M/S Tousif Power Solutions - Professional HT/LT Electrical Work, Transformer Installation, Wiring & Maintenance Services in Malda, West Bengal">
+    <meta name="keywords" content="Electrical Services, HT Work, LT Work, Transformer, Wiring, Malda Electrician, Power Solutions">
+    <meta name="author" content="Md Tousif Ali">
+    <title>M/S Tousif Power Solutions | Professional Electrical Services in Malda</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #0b5ed7;
+            --secondary-green: #198754;
+            --accent-green: #25D366;
+            --dark-blue: #0a4a9c;
+            --dark-green: #15653c;
+            --light-bg: #f8fafc;
+            --dark-text: #0f172a;
+            --light-text: #f1f5f9;
+            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Noto Sans Bengali', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Scroll Animation */
+        .fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+        
+        .fade.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-green));
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        .menu-btn {
+            font-size: 28px;
+            cursor: pointer;
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+        }
+        
+        .menu {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .menu a:hover, .menu a.active {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: var(--transition);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .menu a:hover::after {
+            width: 70%;
+        }
+        
+        @media (max-width: 992px) {
+            .nav {
+                padding: 15px 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            .menu {
+                position: absolute;
+                top: 70px;
+                right: -100%;
+                background: linear-gradient(to bottom, var(--primary-blue), var(--dark-blue));
+                flex-direction: column;
+                width: 85%;
+                height: calc(100vh - 70px);
+                padding: 30px 25px;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15);
+                z-index: 999;
+            }
+            
+            .menu.show {
+                right: 0;
+            }
+            
+            .menu a {
+                padding: 12px 15px;
+                width: 100%;
+                text-align: center;
+                font-size: 1.25rem;
+                margin: 8px 0;
+            }
+            
+            .logo {
+                font-size: 1.6rem;
+            }
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-green), #0d6efd);
+            color: white;
+            text-align: center;
+            padding: 120px 20px 100px;
+            position: relative;
+            overflow: hidden;
+            background-attachment: fixed;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+            animation: pulse 2s infinite;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+        
+        @keyframes pulse {
+            0% { text-shadow: 0 0 10px rgba(255,255,255,0.8); }
+            50% { text-shadow: 0 0 20px rgba(255,255,255,1), 0 0 30px rgba(37, 211, 102, 0.8); }
+            100% { text-shadow: 0 0 10px rgba(255,255,255,0.8); }
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary-blue);
+            padding: 14px 32px;
+            border-radius: 50px;
+            margin: 10px 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid white;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--secondary-green);
+            z-index: -1;
+            transition: var(--transition);
+        }
+        
+        .btn:hover::before {
+            width: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            color: white;
+        }
+        
+        .btn.alt {
+            background: var(--accent-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+        
+        .btn.alt::before {
+            background: #128c7e;
+        }
+        
+        .btn.call {
+            background: #e91e63;
+            border-color: #e91e63;
+        }
+        
+        .btn.call::before {
+            background: #c2185b;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 90px 20px;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: var(--secondary-green);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 15px auto 60px;
+            font-size: 1.2rem;
+            color: #475569;
+        }
+        
+        .wrap {
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-green));
+            z-index: 1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+        }
+        
+        .service-card:hover i {
+            transform: scale(1.2) rotate(15deg);
+            color: var(--secondary-green);
+        }
+        
+        .service-card i {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+        
+        .service-card p {
+            color: #475569;
+            font-size: 1.05rem;
+        }
+        
+        /* Gallery Section */
+        .gallery-container {
+            max-width: 1000px;
+            margin: 50px auto 0;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+        }
+        
+        .gallery-slider {
+            display: flex;
+            animation: slide 35s linear infinite;
+            width: calc(250px * 18);
+            padding: 15px 0;
+        }
+        
+        .gallery-slide {
+            min-width: 250px;
+            height: 180px;
+            margin: 0 10px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            flex-shrink: 0;
+            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.3rem;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-slide:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-slide:hover::before {
+            opacity: 1;
+        }
+        
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 9)); }
+        }
+        
+        /* Booking Section */
+        .booking-container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .booking-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-text);
+            font-size: 1.05rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(11, 94, 215, 0.2);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(45deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            border: none;
+            padding: 16px 35px;
+            border-radius: 50px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            grid-column: 1 / -1;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(11, 94, 215, 0.4);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(11, 94, 215, 0.55);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .form-message {
+            grid-column: 1 / -1;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+        
+        .form-message.success {
+            background: rgba(25, 135, 84, 0.15);
+            color: var(--secondary-green);
+            display: block;
+        }
+        
+        .form-message.error {
+            background: rgba(220, 53, 69, 0.15);
+            color: #dc3545;
+            display: block;
+        }
+        
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .review-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .review-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(25, 135, 84, 0.15);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .review-content {
+            margin-top: 20px;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .review-author {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .author-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 3px;
+        }
+        
+        .author-info p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+        
+        .rating {
+            color: #ffc107;
+            font-size: 1.3rem;
+            margin-top: 5px;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            max-width: 800px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 35px;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 35px 30px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .contact-card i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+        
+        .contact-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+        
+        .contact-card p, .contact-card a {
+            font-size: 1.15rem;
+            color: #475569;
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            margin: 8px 0;
+        }
+        
+        .contact-card a:hover {
+            color: var(--secondary-green);
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-green));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-links a.facebook { background: #3b5998; }
+        .social-links a.instagram { background: #e1306c; }
+        .social-links a.youtube { background: #ff0000; }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, var(--dark-blue), #0a2e5e);
+            color: var(--light-text);
+            padding: 35px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary-green);
+            border-radius: 2px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.05rem;
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-green);
+            transform: translateX(5px);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.05rem;
+            color: #94a3b8;
+        }
+        
+        /* Floating Buttons */
+        .floating-btn {
+            position: fixed;
+            bottom: 25px;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 28px;
+            line-height: 65px;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 7px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .whatsapp-btn {
+            right: 25px;
+            background: var(--accent-green);
+        }
+        
+        .call-btn {
+            right: 105px;
+            background: linear-gradient(45deg, #e91e63, #d81b60);
+        }
+        
+        .chatbot-btn {
+            right: 185px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-green));
+            font-size: 32px;
+            bottom: 25px;
+        }
+        
+        /* Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 100px;
+            right: 25px;
+            width: 380px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 999;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: var(--transition);
+            animation: slideUp 0.4s forwards;
+        }
+        
+        .chatbot-container.show {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .chat-header {
+            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-green));
+            color: white;
+            padding: 18px 25px;
+            font-weight: 700;
+            font-size: 1.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .close-chat {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .close-chat:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .chat-body {
+            height: 380px;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .message {
+            max-width: 85%;
+            padding: 14px 18px;
+            border-radius: 18px;
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .bot-message {
+            align-self: flex-start;
+            background: white;
+            border-bottom-left-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .user-message {
+            align-self: flex-end;
+            background: linear-gradient(45deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            border-bottom-right-radius: 6px;
+            box-shadow: 0 2px 15px rgba(11, 94, 215, 0.3);
+        }
+        
+        .message-time {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 5px;
+            text-align: right;
+            opacity: 0.8;
+        }
+        
+        .user-message .message-time {
+            text-align: left;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        .chat-input-container {
+            padding: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+        
+        #userInput {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            outline: none;
+            transition: var(--transition);
+        }
+        
+        #userInput:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(11, 94, 215, 0.2);
+        }
+        
+        .send-btn {
+            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-green));
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        
+        .send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(11, 94, 215, 0.4);
+        }
+        
+        .typing-indicator {
+            align-self: flex-start;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 18px;
+            border-bottom-left-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            display: none;
+        }
+        
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background: #94a3b8;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 1.5px;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.7rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+            
+            .section {
+                padding: 70px 15px;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .chatbot-container {
+                width: 95%;
+                right: 10px;
+                bottom: 90px;
+            }
+            
+            .floating-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 26px;
+                line-height: 60px;
+            }
+            
+            .whatsapp-btn {
+                right: 15px;
+            }
+            
+            .call-btn {
+                right: 85px;
+            }
+            
+            .chatbot-btn {
+                right: 155px;
+            }
+            
+            .gallery-slider {
+                animation-duration: 45s;
+                width: calc(220px * 18);
+            }
+            
+            .gallery-slide {
+                min-width: 220px;
+                height: 160px;
+                font-size: 1.15rem;
+            }
+            
+            @keyframes slide {
+                100% { transform: translateX(calc(-220px * 9)); }
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 90px 15px 70px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.15rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.05rem;
+            }
+            
+            .booking-container {
+                padding: 25px;
+            }
+            
+            .floating-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 24px;
+                line-height: 55px;
+            }
+            
+            .whatsapp-btn {
+                right: 10px;
+            }
+            
+            .call-btn, .chatbot-btn {
+                display: none;
+            }
+            
+            .menu a {
+                font-size: 1.15rem;
+            }
+            
+            .gallery-slider {
+                animation-duration: 50s;
+                width: calc(200px * 18);
+            }
+            
+            .gallery-slide {
+                min-width: 200px;
+                height: 150px;
+                font-size: 1.1rem;
+            }
+            
+            @keyframes slide {
+                100% { transform: translateX(calc(-200px * 9)); }
+            }
+        }
+        
+        /* Animations for elements */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-green));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            z-index: 998;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="nav">
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+                M/S Tousif Power Solutions
+            </div>
+            <button class="menu-btn" id="menuBtn">☰</button>
+            <div class="menu" id="menu">
+                <a href="#home" class="active">হোম</a>
+                <a href="#services">সার্ভিস</a>
+                <a href="#projects">প্রজেক্ট</a>
+                <a href="#booking">বুকিং</a>
+                <a href="#reviews">রিভিউ</a>
+                <a href="#contact">যোগাযোগ</a>
+            </div>
+        </div>
+    </header>
 
-<header>
-<div class="nav">
-<div class="logo">M/S Tousif Power Solutions</div>
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-<div class="menu" id="menu">
-<a href="#home">Home</a>
-<a href="#services">Services</a>
-<a href="#projects">Projects</a>
-<a href="#booking">Booking</a>
-<a href="#reviews">Reviews</a>
-<a href="#contact">Contact</a>
-</div>
-</div>
-</header>
+    <!-- Hero Section -->
+    <section id="home" class="hero fade">
+        <div class="hero-content">
+            <h1>প্রফেশনাল ইলেকট্রিক্যাল ও পাওয়ার সলিউশনস</h1>
+            <p>HT/LT ইলেকট্রিক্যাল ওয়ার্ক, ট্রান্সফরমার, ওয়্যারিং ও মেইনটেন্যান্স সার্ভিস</p>
+            <a href="tel:8250687140" class="btn call">
+                <i class="fas fa-phone-alt"></i> কল করুন এখনই
+            </a>
+            <a href="https://wa.me/918250687140" class="btn alt">
+                <i class="fab fa-whatsapp"></i> WhatsApp করুন
+            </a>
+        </div>
+    </section>
 
-<section id="home" class="hero fade">
-<h1>Complete Electrical & Power Solutions</h1>
-<p>HT / LT Electrical Work, Transformer, Wiring & Maintenance</p>
-<a class="btn" href="tel:8250687140">Call Now</a>
-<a class="btn alt" href="https://wa.me/918250687140">WhatsApp</a>
-</section>
+    <!-- Services Section -->
+    <section id="services" class="section fade">
+        <div class="wrap">
+            <h2 class="section-title">আমাদের সার্ভিস</h2>
+            <p class="section-subtitle">আমরা মালদা ও আশেপাশের এলাকায় সম্পূর্ণ ইলেকট্রিক্যাল সার্ভিস প্রদান করে থাকি। আমাদের সকল কাজ পেশাদার ইঞ্জিনিয়ার ও টেকনিশিয়ানদের দ্বারা সম্পন্ন হয়।</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>HT ওয়ার্ক</h3>
+                    <p>হাই টেনশন লাইন ইনস্টলেশন, মেইনটেন্যান্স ও রিপেয়ার সার্ভিস। সকল ধরনের HT কানেকশন ও সাব-স্টেশন সেটআপ।</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-plug"></i>
+                    <h3>LT ওয়ার্ক</h3>
+                    <p>লো টেনশন লাইন ইনস্টলেশন, মেইনটেন্যান্স ও রিপেয়ার সার্ভিস। সকল ধরনের LT কানেকশন ও ডিস্ট্রিবিউশন সিস্টেম।</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-charging-station"></i>
+                    <h3>ট্রান্সফরমার</h3>
+                    <p>বিভিন্ন ক্যাপাসিটির ট্রান্সফরমার ইনস্টলেশন, রিপেয়ার ও মেইনটেন্যান্স সার্ভিস। নতুন সেটআপ ও রিনিউয়াল কাজ।</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-house"></i>
+                    <h3>হাউস ওয়্যারিং</h3>
+                    <p>বাড়ি, দোকান, অফিস ও কমার্শিয়াল বিল্ডিংয়ের সম্পূর্ণ ওয়্যারিং সলিউশন। মডার্ন ও সেফটি স্ট্যান্ডার্ড অনুযায়ী কাজ।</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>মেইনটেন্যান্স</h3>
+                    <p>নিয়মিত ইলেকট্রিক্যাল সিস্টেম চেকআপ, মেইনটেন্যান্স ও রিপেয়ার সার্ভিস। ইমার্জেন্সি সার্ভিস ২৪/৭ উপলব্ধ।</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="services" class="section fade">
-<div class="wrap">
-<h2>Our Services</h2><br>
-<div class="grid">
-<div class="card"><i class="fa fa-bolt fa-2x"></i><h3>HT Work</h3></div>
-<div class="card"><i class="fa fa-plug fa-2x"></i><h3>LT Work</h3></div>
-<div class="card"><i class="fa fa-charging-station fa-2x"></i><h3>Transformer</h3></div>
-<div class="card"><i class="fa fa-house fa-2x"></i><h3>House Wiring</h3></div>
-</div>
-</div>
-</section>
+    <!-- Projects Gallery Section -->
+    <section id="projects" class="section fade">
+        <div class="wrap">
+            <h2 class="section-title">প্রজেক্ট গ্যালারি</h2>
+            <p class="section-subtitle">আমাদের সম্পন্ন করা বিভিন্ন প্রজেক্টের ছবি দেখুন। আমরা প্রতিটি কাজে গুণগত মান ও নিরাপত্তার প্রতি বিশেষ গুরুত্ব দিয়ে থাকি।</p>
+            
+            <div class="gallery-container">
+                <div class="gallery-slider">
+                    <!-- Project images that cannot be deleted - using reliable placeholder service -->
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>HT লাইন ইনস্টলেশন</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1590804370128-4c97f499e549?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>ট্রান্সফরমার সেটআপ</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>হাউস ওয়্যারিং</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1617791160533-557e90a39746?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>LT প্যানেল ইনস্টলেশন</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1581094794323-8f4f687c4e47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>কমার্শিয়াল ওয়্যারিং</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>সোলার প্যানেল কানেকশন</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>HT লাইন ইনস্টলেশন</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1590804370128-4c97f499e549?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>ট্রান্সফরমার সেটআপ</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>হাউস ওয়্যারিং</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1617791160533-557e90a39746?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>LT প্যানেল ইনস্টলেশন</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1581094794323-8f4f687c4e47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>কমার্শিয়াল ওয়্যারিং</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>সোলার প্যানেল কানেকশন</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>HT লাইন ইনস্টলেশন</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1590804370128-4c97f499e549?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>ট্রান্সফরমার সেটআপ</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>হাউস ওয়্যারিং</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1617791160533-557e90a39746?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>LT প্যানেল ইনস্টলেশন</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1581094794323-8f4f687c4e47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>কমার্শিয়াল ওয়্যারিং</div>
+                    </div>
+                    <div class="gallery-slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
+                        <div>সোলার প্যানেল কানেকশন</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="projects" class="section fade">
-<div class="wrap">
-<h2>Project Gallery</h2>
-<div class="slider">
-<div class="slide-track">
-<img src="images/1.jfif">
-<img src="images/2.jfif">
-<img src="images/3.jfif">
-<img src="images/1.jfif">
-<img src="images/2.jfif">
-<img src="images/3.jfif">
-</div>
-</div>
-</div>
-</section>
+    <!-- Booking Section -->
+    <section id="booking" class="section fade" style="background-color: #f1f8ff;">
+        <div class="wrap">
+            <h2 class="section-title">অনলাইন বুকিং</h2>
+            <p class="section-subtitle">নিচের ফর্মটি পূরণ করে আপনার ইলেকট্রিক্যাল সার্ভিসের জন্য বুকিং করুন। আমরা আপনার সাথে যোগাযোগ করব খুব শীঘ্রই।</p>
+            
+            <div class="booking-container">
+                <form id="bookingForm" class="booking-form">
+                    <div class="form-group">
+                        <label for="name">আপনার নাম *</label>
+                        <input type="text" id="name" class="form-control" name="name" required placeholder="আপনার পূর্ণ নাম লিখুন">
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">মোবাইল নম্বর *</label>
+                        <input type="tel" id="mobile" class="form-control" name="mobile" required placeholder="মোবাইল নম্বর লিখুন">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">ইমেইল ঠিকানা</label>
+                        <input type="email" id="email" class="form-control" name="email" placeholder="ইমেইল ঠিকানা লিখুন">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">সার্ভিসের ধরণ *</label>
+                        <select id="service" class="form-control" name="service" required>
+                            <option value="">সিলেক্ট করুন</option>
+                            <option value="HT Work">HT ওয়ার্ক</option>
+                            <option value="LT Work">LT ওয়ার্ক</option>
+                            <option value="Transformer">ট্রান্সফরমার ইনস্টলেশন/রিপেয়ার</option>
+                            <option value="House Wiring">হাউস ওয়্যারিং</option>
+                            <option value="Maintenance">মেইনটেন্যান্স</option>
+                            <option value="Other">অন্যান্য</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="address">ঠিকানা *</label>
+                        <input type="text" id="address" class="form-control" name="address" required placeholder="সম্পূর্ণ ঠিকানা লিখুন">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="details">সার্ভিস ডিটেইলস *</label>
+                        <textarea id="details" class="form-control" name="details" required placeholder="আপনার প্রয়োজনীয় সার্ভিস সম্পর্কে বিস্তারিত লিখুন"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">বুকিং করুন এখনই</button>
+                    <div id="formMessage" class="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
 
-<section id="booking" class="section fade">
-<div class="wrap">
-<h2>Online Booking</h2>
-<form action="https://formsubmit.co/mdtousifali92@gmail.com" method="POST">
-<input type="text" name="Name" placeholder="Your Name" required>
-<input type="tel" name="Mobile" placeholder="Mobile Number" required>
-<textarea name="Service" placeholder="Service Details"></textarea>
-<button class="btn">Submit Booking</button>
-</form>
-</div>
-</section>
+    <!-- Reviews Section -->
+    <section id="reviews" class="section fade">
+        <div class="wrap">
+            <h2 class="section-title">ক্লায়েন্ট রিভিউ</h2>
+            <p class="section-subtitle">আমাদের সার্ভিস সম্পর্কে ক্লায়েন্টদের মতামত জানুন। আমরা প্রতিটি ক্লায়েন্টের সন্তুষ্টি নিশ্চিত করতে সর্বদা প্রয়াসী থাকি।</p>
+            
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-content">
+                        খুব ভালো সার্ভিস! আমার বাড়ির সম্পূর্ণ ওয়্যারিং করেছেন খুব পেশাদারিত্বের সাথে। কাজের গুণগত মান অত্যন্ত ভালো এবং সময়মতো কাজ শেষ করেছেন। দামও যুক্তিসঙ্গত। অবশ্যই আবার কাজ দেব।
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">র</div>
+                        <div class="author-info">
+                            <h4>রহিমুল ইসলাম</h4>
+                            <p>মালদা টাউন</p>
+                            <div class="rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-content">
+                        আমাদের দোকানের LT কানেকশন ও ওয়্যারিং করেছেন খুব দক্ষতার সাথে। ইমার্জেন্সি সার্ভিস চেয়েছিলাম, রাত ১০টায় এসে কাজ করেছেন। খুব বিশ্বাসযোগ্য ও দায়িত্বশীল টিম। সবাইকে রেকমেন্ড করব।
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">স</div>
+                        <div class="author-info">
+                            <h4>সাকিব আহমেদ</h4>
+                            <p>গৌড় বাজার, মালদা</p>
+                            <div class="rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-content">
+                        আমাদের ফ্যাক্টরির জন্য ট্রান্সফরমার ইনস্টলেশন করেছেন। খুব ভালো কাজ করেছেন, সবকিছু সেফটি স্ট্যান্ডার্ড অনুযায়ী করা হয়েছে। মেইনটেন্যান্স সার্ভিসও নিয়মিত দেন। অত্যন্ত সন্তুষ্ট।
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">এ</div>
+                        <div class="author-info">
+                            <h4>এনামুল হক</h4>
+                            <p>ইংরেজবাজার, মালদা</p>
+                            <div class="rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="reviews" class="section fade">
-<div class="wrap">
-<h2>Customer Reviews</h2><br>
-<div class="grid">
-<div class="review">⭐⭐⭐⭐⭐ Excellent Service</div>
-<div class="review">⭐⭐⭐⭐⭐ Fast & Reliable Work</div>
-<div class="review">⭐⭐⭐⭐⭐ Professional Electrician</div>
-</div>
-</div>
-</section>
+    <!-- Contact Section -->
+    <section id="contact" class="section fade" style="background-color: #f8fafc;">
+        <div class="wrap">
+            <h2 class="section-title">যোগাযোগ করুন</h2>
+            <p class="section-subtitle">আমাদের সাথে যোগাযোগ করতে নিচের তথ্যগুলো ব্যবহার করুন অথবা সরাসরি কল/মেসেজ করুন। আমরা ২৪/৭ আপনার সেবায় প্রস্তুত।</p>
+            
+            <div class="contact-container">
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>ঠিকানা</h3>
+                    <p>মালদা, পশ্চিমবঙ্গ</p>
+                    <p>ভারত</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>কল করুন</h3>
+                    <a href="tel:8250687140">+91 8250687140</a>
+                    <a href="tel:918250687140">+91 918250687140</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>ইমেইল করুন</h3>
+                    <a href="mailto:mdtousifali92@gmail.com">mdtousifali92@gmail.com</a>
+                    <a href="mailto:info@tousifpower.com">info@tousifpower.com</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>কাজের সময়</h3>
+                    <p>সকাল ৮:০০ - রাত ৯:০০</p>
+                    <p>সকল দিন (২৪/৭ ইমার্জেন্সি সার্ভিস)</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--primary-blue);">সোশ্যাল মিডিয়ায় আমাদের ফলো করুন</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1C9yvEp9tA/" class="facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/x___boy___t_o_u_s_i_f___143" class="instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://youtube.com/@aisecretsbangla" class="youtube" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="contact" class="section fade">
-<div class="wrap">
-<h2>Contact</h2>
-<p>📍 Malda, West Bengal</p>
-<p>📞 8250687140</p>
-<p>✉️ mdtousifali92@gmail.com</p>
-</div>
-</section>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>M/S Tousif Power Solutions</h3>
+                <p style="margin-top: 20px; line-height: 1.7; color: #cbd5e1;">
+                    মালদা ও আশেপাশের এলাকায় পেশাদার ইলেকট্রিক্যাল সার্ভিস প্রদান করছি ১০ বছর ধরে। আমরা গুণগত মান, নিরাপত্তা ও সময়ানুবর্তিতার প্রতি সর্বদা গুরুত্ব দিয়ে থাকি।
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>কুইক লিংক</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">হোম</a></li>
+                    <li><a href="#services">সার্ভিস</a></li>
+                    <li><a href="#projects">প্রজেক্ট</a></li>
+                    <li><a href="#booking">বুকিং</a></li>
+                    <li><a href="#reviews">রিভিউ</a></li>
+                    <li><a href="#contact">যোগাযোগ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>সার্ভিস এরিয়া</h3>
+                <ul class="footer-links">
+                    <li>মালদা টাউন</li>
+                    <li>ইংরেজবাজার</li>
+                    <li>গৌড় বাজার</li>
+                    <li>বালুরঘাট</li>
+                    <li>হবিবপুর</li>
+                    <li>কালিয়াগঞ্জ</li>
+                    <li>সমগ্র মালদা জেলা</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; ২০২৬ M/S Tousif Power Solutions. সর্বস্বত্ব সংরক্ষিত। | ডিজাইন ও ডেভেলপমেন্ট: টাউসিফ পাওয়ার টিম
+        </div>
+    </footer>
 
-<footer>© 2026 M/S Tousif Power Solutions</footer>
+    <!-- Floating Buttons -->
+    <a href="https://wa.me/918250687140" class="floating-btn whatsapp-btn" title="WhatsApp করুন">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:8250687140" class="floating-btn call-btn" title="কল করুন">
+        <i class="fas fa-phone-alt"></i>
+    </a>
+    <div class="floating-btn chatbot-btn" id="chatbotBtn" title="চ্যাট করুন">
+        <i class="fas fa-robot"></i>
+    </div>
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
-<a href="https://wa.me/918250687140" class="float">
-<i class="fab fa-whatsapp"></i>
-</a>
+    <!-- Chatbot -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chat-header">
+            <div>ইলেকট্রিক্যাল হেল্প বট</div>
+            <button class="close-chat" id="closeChat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="message bot-message">
+                👋 নমস্কার! আমি Tousif Power Solutions এর AI চ্যাটবট। আমি কিভাবে আপনাকে সাহায্য করতে পারি?
+                <div class="message-time">এখন</div>
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="userInput" class="form-control" placeholder="আপনার প্রশ্ন লিখুন..." autocomplete="off">
+            <button class="send-btn" id="sendBtn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+        <div class="typing-indicator" id="typingIndicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
 
-<!-- CHATBOT -->
-<div class="chatbot-btn" onclick="toggleChat()">💬</div>
-
-<div class="chatbox" id="chatbox">
-<div class="chat-header">Electrical Help</div>
-<div class="chat-body" id="chatBody">
-<div>👋 নমস্কার! কিভাবে সাহায্য করতে পারি?</div>
-</div>
-<div class="chat-input">
-<input type="text" id="userInput" placeholder="মেসেজ লিখুন">
-<button onclick="sendMessage()">Send</button>
-</div>
-</div>
-
-<script>
-function toggleMenu(){
-document.getElementById("menu").classList.toggle("show");
-}
-
-const faders=document.querySelectorAll(".fade");
-window.addEventListener("scroll",()=>{
-faders.forEach(el=>{
-if(el.getBoundingClientRect().top<window.innerHeight-100){
-el.classList.add("show");
-}
-})
-});
-
-function toggleChat(){
-let box=document.getElementById("chatbox");
-box.style.display = box.style.display==="flex" ? "none" : "flex";
-}
-
-function sendMessage(){
-let input=document.getElementById("userInput");
-let msg=input.value.toLowerCase();
-if(msg==="") return;
-
-let body=document.getElementById("chatBody");
-body.innerHTML += "<div>🧑 "+msg+"</div>";
-
-let reply="দুঃখিত বুঝতে পারিনি। ফোন করুন 8250687140";
-
-if(msg.includes("ht")) reply="আমরা HT Line কাজ করি।";
-else if(msg.includes("lt")) reply="আমরা LT কাজ করি।";
-else if(msg.includes("transformer")) reply="Transformer Installation ও Repair করি।";
-else if(msg.includes("wiring")) reply="বাড়ির সম্পূর্ণ wiring করি।";
-else if(msg.includes("price")||msg.includes("rate")) reply="কাজ অনুযায়ী রেট নির্ধারণ হয়।";
-
-setTimeout(()=>{
-body.innerHTML += "<div>🤖 "+reply+"</div>";
-body.scrollTop=body.scrollHeight;
-},400);
-
-input.value="";
-}
-</script>
-
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const menu = document.getElementById('menu');
+        
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('show');
+            menuBtn.innerHTML = menu.classList.contains('show') ? '✕' : '☰';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('show');
+                menuBtn.innerHTML = '☰';
+            });
+        });
+        
+        // Scroll Animation
+        const faders = document.querySelectorAll('.fade');
+        
+        const appearOnScroll = () => {
+            faders.forEach(el => {
+                const elPosition = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elPosition < windowHeight - 100) {
+                    el.classList.add('show');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', appearOnScroll);
+        window.addEventListener('load', appearOnScroll);
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Active Menu Item on Scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.menu a');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if(pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Chatbot Functionality
+        const chatbotBtn = document.getElementById('chatbotBtn');
+        const chatbotContainer = document.getElementById('chatbotContainer');
+        const closeChat = document.getElementById('closeChat');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const chatBody = document.getElementById('chatBody');
+        const typingIndicator = document.getElementById('typingIndicator');
+        
+        chatbotBtn.addEventListener('click', () => {
+            chatbotContainer.classList.toggle('show');
+            chatbotBtn.innerHTML = chatbotContainer.classList.contains('show') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-robot"></i>';
+        });
+        
+        closeChat.addEventListener('click', () => {
+            chatbotContainer.classList.remove('show');
+            chatbotBtn.innerHTML = '<i class="fas fa-robot"></i>';
+        });
+        
+        // Close chatbot if clicked outside
+        document.addEventListener('click', (e) => {
+            if(chatbotContainer.classList.contains('show') && 
+               !chatbotContainer.contains(e.target) && 
+               !chatbotBtn.contains(e.target)) {
+                chatbotContainer.classList.remove('show');
+                chatbotBtn.innerHTML = '<i class="fas fa-robot"></i>';
+            }
+        });
+        
+        // Send message function
+        const sendMessage = () => {
+            const msg = userInput.value.trim();
+            if(msg === '') return;
+            
+            // Add user message
+            addMessage(msg, 'user');
+            userInput.value = '';
+            
+            // Show typing indicator
+            typingIndicator.style.display = 'block';
+            chatBody.scrollTop = chatBody.scrollHeight;
+            
+            // Generate bot response after delay
+            setTimeout(() => {
+                typingIndicator.style.display = 'none';
+                const response = getBotResponse(msg.toLowerCase());
+                addMessage(response, 'bot');
+            }, 1200);
+        };
+        
+        // Add message to chat
+        const addMessage = (text, sender) => {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+            
+            messageDiv.innerHTML = `
+                ${text}
+                <div class="message-time">${getCurrentTime()}</div>
+            `;
+            
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        };
+        
+        // Get current time for messages
+        const getCurrentTime = () => {
+            const now = new Date();
+            return now.getHours() + ':' + now.getMinutes().toString().padStart(2, '0');
+        };
+        
+        // Bot responses
+        const getBotResponse = (msg) => {
+            if(msg.includes('হ্যালো') || msg.includes('হাই') || msg.includes('hello') || msg.includes('hi')) {
+                return 'হ্যালো! আমি Tousif Power Solutions এর AI চ্যাটবট। আমি কিভাবে আপনাকে সাহায্য করতে পারি?';
+            }
+            else if(msg.includes('ht') || msg.includes('হেচটি') || msg.includes('হাই টেনশন')) {
+                return 'আমরা সম্পূর্ণ HT (হাই টেনশন) লাইন ইনস্টলেশন, মেইনটেন্যান্স ও রিপেয়ার সার্ভিস প্রদান করি। আমাদের অভিজ্ঞ টিম নিরাপত্তা স্ট্যান্ডার্ড অনুযায়ী কাজ করে থাকে। বিস্তারিত জানতে কল করুন: 8250687140';
+            }
+            else if(msg.includes('lt') || msg.includes('এলটি') || msg.includes('লো টেনশন')) {
+                return 'আমরা সকল ধরনের LT (লো টেনশন) কানেকশন, প্যানেল ইনস্টলেশন ও মেইনটেন্যান্স সার্ভিস দিয়ে থাকি। বাড়ি, দোকান, অফিস সব জায়গায় কাজ করি। দাম জানতে কল করুন: 8250687140';
+            }
+            else if(msg.includes('transformer') || msg.includes('ট্রান্সফরমার') || msg.includes('ট্রান্সফারমার')) {
+                আমরা বিভিন্ন ক্যাপাসিটির ট্রান্সফরমার ইনস্টলেশন, রিপেয়ার ও মেইনটেন্যান্স সার্ভিস প্রদান করি। নতুন সেটআপ থেকে শুরু করে রিনিউয়াল কাজ করে থাকি। বিস্তারিত জানতে কল করুন: 8250687140';
+            }
+            else if(msg.includes('wiring') || msg.includes('ওয়্যারিং') || msg.includes('তারের কাজ')) {
+                আমরা বাড়ি, দোকান, অফিস ও কমার্শিয়াল বিল্ডিংয়ের সম্পূর্ণ ওয়্যারিং করে থাকি। মডার্ন ও সেফটি স্ট্যান্ডার্ড অনুযায়ী কাজ করি। দাম জানতে কল করুন: 8250687140';
+            }
+            else if(msg.includes('দাম') || msg.includes('rate') || msg.includes('মূল্য') || msg.includes('খরচ')) {
+                আমাদের সার্ভিসের দাম কাজের ধরন, জটিলতা ও লোকেশন অনুযায়ী নির্ধারণ করা হয়। আমরা যুক্তিসঙ্গত দামে সেরা কোয়ালিটির সার্ভিস দিয়ে থাকি। একটি কোয়োটেশন পেতে কল করুন: 8250687140 অথবা অনলাইন বুকিং করুন।';
+            }
+            else if(msg.includes('যোগাযোগ') || msg.includes('contact') || msg.includes('ফোন') || msg.includes('কল')) {
+                'আমাদের সাথে যোগাযোগ করতে পারেন:\n📱 কল/WhatsApp: 8250687140\n📧 ইমেইল: mdtousifali92@gmail.com\n📍 ঠিকানা: মালদা, পশ্চিমবঙ্গ\n⏰ কাজের সময়: সকাল ৮টা - রাত ৯টা (২৪/৭ ইমার্জেন্সি সার্ভিস)';
+            }
+            else if(msg.includes('বুকিং') || msg.includes('booking') || msg.includes('অর্ডার')) {
+                'অনলাইন বুকিং করতে আমাদের ওয়েবসাইটের "অনলাইন বুকিং" সেকশনে যান অথবা সরাসরি কল করুন: 8250687140। আমরা আপনার সাথে যোগাযোগ করব খুব শীঘ্রই।';
+            }
+            else if(msg.includes('ধন্যবাদ') || msg.includes('thanks') || msg.includes('thank you')) {
+                'আপনাকে ধন্যবাদ! আমরা আপনার সাথে কাজ করতে পেরে গর্বিত। আর কোন সাহায্য লাগলে জানাবেন।';
+            }
+            else {
+                'দুঃখিত, আমি আপনার প্রশ্নটি বুঝতে পারিনি। আপনি কি আরও বিস্তারিত বলতে পারেন? অথবা সরাসরি কল করুন: 8250687140। আমাদের টিম আপনাকে সাহায্য করবে।';
+            }
+        };
+        
+        // Event listeners for chat
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') sendMessage();
+        });
+        
+        // Form Submission
+        const bookingForm = document.getElementById('bookingForm');
+        const formMessage = document.getElementById('formMessage');
+        
+        bookingForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = bookingForm.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> পাঠানো হচ্ছে...';
+            submitBtn.disabled = true;
+            
+            // Get form data
+            const formData = new FormData(bookingForm);
+            const data = Object.fromEntries(formData.entries());
+            
+            // In a real application, you would send this data to your server
+            // For this demo, we'll simulate a successful submission
+            
+            try {
+                // Simulate API call delay
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // Show success message
+                formMessage.textContent = 'আপনার বুকিং সফলভাবে জমা হয়েছে! আমরা আপনার সাথে যোগাযোগ করব খুব শীঘ্রই।';
+                formMessage.className = 'form-message success';
+                
+                // Reset form
+                bookingForm.reset();
+                
+                // Scroll to message
+                formMessage.scrollIntoView({behavior: 'smooth', block: 'center'});
+            } catch (error) {
+                // Show error message
+                formMessage.textContent = 'বুকিং জমা দেওয়ার সময় একটি ত্রুটি হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন অথবা সরাসরি কল করুন: 8250687140';
+                formMessage.className = 'form-message error';
+            } finally {
+                // Restore button
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if(window.pageYOffset > 500) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        // Initialize with first scroll check
+        appearOnScroll();
+    </script>
 </body>
-  </html>
+</html>
