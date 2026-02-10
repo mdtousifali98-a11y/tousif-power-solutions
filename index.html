@@ -10,10 +10,10 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Poppins,sans-serif}
+body{font-family:Poppins,sans-serif;background:#f1f5f9}
 
-/* Animation */
-.fade{opacity:0;transform:translateY(40px);transition:1s}
+/* Scroll Animation */
+.fade{opacity:0;transform:translateY(50px);transition:1s}
 .fade.show{opacity:1;transform:translateY(0)}
 
 /* Header */
@@ -24,117 +24,49 @@ position:sticky;
 top:0;
 z-index:1000;
 }
-.nav{
-max-width:1200px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-padding:15px;
-}
+.nav{max-width:1200px;margin:auto;display:flex;justify-content:space-between;padding:15px}
 .logo{font-weight:700}
-
 .menu-btn{font-size:24px;cursor:pointer;display:none}
 .menu{display:flex;gap:20px}
-.menu a{color:white}
+.menu a{color:white;text-decoration:none}
 
 @media(max-width:768px){
 .menu-btn{display:block}
-.menu{
-position:absolute;
-top:60px;
-right:0;
-background:#0b5ed7;
-flex-direction:column;
-width:200px;
-display:none;
-padding:15px;
-}
+.menu{position:absolute;top:60px;right:0;background:#0b5ed7;flex-direction:column;width:200px;display:none;padding:15px}
 .menu.show{display:flex}
 }
 
 /* Hero */
-.hero{
-background:linear-gradient(135deg,#0b5ed7,#198754);
-color:white;
-text-align:center;
-padding:80px 20px;
-}
+.hero{background:linear-gradient(135deg,#0b5ed7,#198754);color:white;text-align:center;padding:100px 20px}
 
 /* Button */
-.btn{
-display:inline-block;
-background:white;
-color:#0b5ed7;
-padding:12px 20px;
-border-radius:10px;
-margin:10px;
-font-weight:600;
-}
+.btn{display:inline-block;background:white;color:#0b5ed7;padding:12px 22px;border-radius:10px;margin:10px;font-weight:600;text-decoration:none;transition:.3s}
+.btn:hover{transform:scale(1.05)}
 .btn.alt{background:#25D366;color:white}
 
 /* Section */
-.section{padding:60px 20px}
+.section{padding:70px 20px}
 .wrap{max-width:1200px;margin:auto}
 
 /* Cards */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
-.card{
-background:white;
-padding:25px;
-border-radius:15px;
-box-shadow:0 8px 20px rgba(0,0,0,.1);
-text-align:center;
-}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px}
+.card{background:white;padding:30px;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,.1);text-align:center;transition:.3s}
+.card:hover{transform:translateY(-10px)}
 
 /* Sliding Gallery */
-.slider{
-overflow:hidden;
-}
-.slide-track{
-display:flex;
-animation:scroll 20s linear infinite;
-}
-.slide-track img{
-width:250px;
-height:180px;
-margin:10px;
-border-radius:10px;
-object-fit:cover;
-}
-
-@keyframes scroll{
-0%{transform:translateX(0)}
-100%{transform:translateX(-100%)}
-}
+.slider{overflow:hidden}
+.slide-track{display:flex;animation:scroll 25s linear infinite}
+.slide-track img{width:260px;height:190px;margin:12px;border-radius:12px;object-fit:cover}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
 /* Booking Form */
-form{
-display:grid;
-gap:15px;
-max-width:500px;
-}
-input,textarea{
-padding:12px;
-border:1px solid #ccc;
-border-radius:8px;
-}
+form{display:grid;gap:15px;max-width:500px}
+input,textarea{padding:12px;border:1px solid #ccc;border-radius:8px}
 
 /* Review */
-.review{
-background:#f8fafc;
-padding:20px;
-border-radius:12px;
-}
+.review{background:white;padding:20px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.1)}
 
-/* Social */
-.social{text-align:center;margin-top:20px}
-.social a{font-size:25px;margin:0 12px;color:#0b5ed7}
-
-/* Floating WhatsApp */
+/* WhatsApp Floating */
 .float{
 position:fixed;
 bottom:20px;
@@ -147,14 +79,74 @@ border-radius:50%;
 text-align:center;
 font-size:30px;
 line-height:60px;
+z-index:999;
 }
 
-footer{
-background:#0f172a;
-color:#cbd5e1;
-padding:20px;
+/* CHATBOT DESIGN */
+.chatbot-btn{
+position:fixed;
+bottom:95px;
+right:20px;
+background:linear-gradient(45deg,#0b5ed7,#198754);
+color:white;
+width:60px;
+height:60px;
+border-radius:50%;
+font-size:28px;
+text-align:center;
+line-height:60px;
+cursor:pointer;
+z-index:999;
+box-shadow:0 5px 15px rgba(0,0,0,.3);
+}
+
+.chatbox{
+position:fixed;
+bottom:165px;
+right:20px;
+width:300px;
+background:white;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.3);
+display:none;
+flex-direction:column;
+overflow:hidden;
+z-index:999;
+animation:fadeIn .3s;
+}
+
+@keyframes fadeIn{
+from{transform:translateY(30px);opacity:0}
+to{transform:translateY(0);opacity:1}
+}
+
+.chat-header{
+background:linear-gradient(45deg,#0b5ed7,#198754);
+color:white;
+padding:12px;
+font-weight:bold;
 text-align:center;
 }
+
+.chat-body{
+height:250px;
+overflow-y:auto;
+padding:10px;
+font-size:14px;
+}
+
+.chat-body div{
+margin:6px 0;
+padding:8px;
+border-radius:8px;
+background:#f1f5f9;
+}
+
+.chat-input{display:flex;border-top:1px solid #ddd}
+.chat-input input{flex:1;padding:10px;border:none;outline:none}
+.chat-input button{background:#0b5ed7;color:white;border:none;padding:10px 15px;cursor:pointer}
+
+footer{background:#0f172a;color:#cbd5e1;padding:20px;text-align:center}
 </style>
 </head>
 
@@ -175,133 +167,136 @@ text-align:center;
 </div>
 </header>
 
-<!-- Hero -->
 <section id="home" class="hero fade">
 <h1>Complete Electrical & Power Solutions</h1>
 <p>HT / LT Electrical Work, Transformer, Wiring & Maintenance</p>
-
 <a class="btn" href="tel:8250687140">Call Now</a>
-
-<a class="btn alt"
-href="https://wa.me/918250687140?text=Hello%20I%20need%20Electrical%20Service">
-WhatsApp
-</a>
+<a class="btn alt" href="https://wa.me/918250687140">WhatsApp</a>
 </section>
 
-<!-- Services -->
 <section id="services" class="section fade">
 <div class="wrap">
 <h2>Our Services</h2><br>
-
 <div class="grid">
-<div class="card"><i class="fa fa-bolt"></i><h3>HT Work</h3></div>
-<div class="card"><i class="fa fa-plug"></i><h3>LT Work</h3></div>
-<div class="card"><i class="fa fa-charging-station"></i><h3>Transformer</h3></div>
-<div class="card"><i class="fa fa-house"></i><h3>House Wiring</h3></div>
+<div class="card"><i class="fa fa-bolt fa-2x"></i><h3>HT Work</h3></div>
+<div class="card"><i class="fa fa-plug fa-2x"></i><h3>LT Work</h3></div>
+<div class="card"><i class="fa fa-charging-station fa-2x"></i><h3>Transformer</h3></div>
+<div class="card"><i class="fa fa-house fa-2x"></i><h3>House Wiring</h3></div>
 </div>
-
 </div>
 </section>
 
-<!-- Sliding Gallery -->
 <section id="projects" class="section fade">
 <div class="wrap">
-<h2>Projects</h2>
-
+<h2>Project Gallery</h2>
 <div class="slider">
 <div class="slide-track">
-
 <img src="images/1.jfif">
 <img src="images/2.jfif">
 <img src="images/3.jfif">
 <img src="images/1.jfif">
 <img src="images/2.jfif">
 <img src="images/3.jfif">
-
 </div>
 </div>
-
 </div>
 </section>
 
-<!-- Booking Form -->
 <section id="booking" class="section fade">
 <div class="wrap">
 <h2>Online Booking</h2>
-
 <form action="https://formsubmit.co/mdtousifali92@gmail.com" method="POST">
-
 <input type="text" name="Name" placeholder="Your Name" required>
 <input type="tel" name="Mobile" placeholder="Mobile Number" required>
 <textarea name="Service" placeholder="Service Details"></textarea>
-
 <button class="btn">Submit Booking</button>
-
 </form>
 </div>
 </section>
 
-<!-- Reviews -->
 <section id="reviews" class="section fade">
 <div class="wrap">
 <h2>Customer Reviews</h2><br>
-
 <div class="grid">
-<div class="review">
-⭐⭐⭐⭐⭐ <br>
-"Very good electrical service"
+<div class="review">⭐⭐⭐⭐⭐ Excellent Service</div>
+<div class="review">⭐⭐⭐⭐⭐ Fast & Reliable Work</div>
+<div class="review">⭐⭐⭐⭐⭐ Professional Electrician</div>
 </div>
-
-<div class="review">
-⭐⭐⭐⭐⭐ <br>
-"Fast and reliable work"
-</div>
-
-</div>
-
 </div>
 </section>
 
-<!-- Contact -->
 <section id="contact" class="section fade">
 <div class="wrap">
 <h2>Contact</h2>
 <p>📍 Malda, West Bengal</p>
 <p>📞 8250687140</p>
 <p>✉️ mdtousifali92@gmail.com</p>
-
-<div class="social">
-<a href="https://www.facebook.com/share/1C9yvEp9tA/"><i class="fab fa-facebook"></i></a>
-<a href="https://www.instagram.com/x___boy___t_o_u_s_i_f___143"><i class="fab fa-instagram"></i></a>
-<a href="https://youtube.com/@aisecretsbangla"><i class="fab fa-youtube"></i></a>
-</div>
-
 </div>
 </section>
 
-<footer>
-© 2026 M/S Tousif Power Solutions
-</footer>
+<footer>© 2026 M/S Tousif Power Solutions</footer>
 
 <a href="https://wa.me/918250687140" class="float">
 <i class="fab fa-whatsapp"></i>
 </a>
+
+<!-- CHATBOT -->
+<div class="chatbot-btn" onclick="toggleChat()">💬</div>
+
+<div class="chatbox" id="chatbox">
+<div class="chat-header">Electrical Help</div>
+<div class="chat-body" id="chatBody">
+<div>👋 নমস্কার! কিভাবে সাহায্য করতে পারি?</div>
+</div>
+<div class="chat-input">
+<input type="text" id="userInput" placeholder="মেসেজ লিখুন">
+<button onclick="sendMessage()">Send</button>
+</div>
+</div>
 
 <script>
 function toggleMenu(){
 document.getElementById("menu").classList.toggle("show");
 }
 
-/* Animation Scroll */
 const faders=document.querySelectorAll(".fade");
 window.addEventListener("scroll",()=>{
 faders.forEach(el=>{
-if(el.getBoundingClientRect().top<window.innerHeight-50){
+if(el.getBoundingClientRect().top<window.innerHeight-100){
 el.classList.add("show");
 }
 })
-})
+});
+
+function toggleChat(){
+let box=document.getElementById("chatbox");
+box.style.display = box.style.display==="flex" ? "none" : "flex";
+}
+
+function sendMessage(){
+let input=document.getElementById("userInput");
+let msg=input.value.toLowerCase();
+if(msg==="") return;
+
+let body=document.getElementById("chatBody");
+body.innerHTML += "<div>🧑 "+msg+"</div>";
+
+let reply="দুঃখিত বুঝতে পারিনি। ফোন করুন 8250687140";
+
+if(msg.includes("ht")) reply="আমরা HT Line কাজ করি।";
+else if(msg.includes("lt")) reply="আমরা LT কাজ করি।";
+else if(msg.includes("transformer")) reply="Transformer Installation ও Repair করি।";
+else if(msg.includes("wiring")) reply="বাড়ির সম্পূর্ণ wiring করি।";
+else if(msg.includes("price")||msg.includes("rate")) reply="কাজ অনুযায়ী রেট নির্ধারণ হয়।";
+
+setTimeout(()=>{
+body.innerHTML += "<div>🤖 "+reply+"</div>";
+body.scrollTop=body.scrollHeight;
+},400);
+
+input.value="";
+}
 </script>
 
 </body>
-                            </html>
+  </html>
