@@ -1,20 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Admin Panel</title>
+<meta charset="UTF-8">
+<title>Admin Panel - Tousif Power Solutions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <style>
+
 body{
-font-family:Arial;
-padding:20px;
-background:#f0f6ff;
+font-family:Poppins;
+background:#f2f4f8;
+margin:0;
 }
 
-input,button{
-padding:8px;
-margin:5px;
+/* Login */
+
+.login-box{
+width:320px;
+background:white;
+padding:30px;
+margin:120px auto;
+text-align:center;
+border-radius:12px;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+input{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+button{
+background:#0b5ed7;
+color:white;
+border:none;
+padding:10px;
+width:100%;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* Panel */
+
+.panel{
+display:none;
+padding:20px;
+}
+
+.panel h2{
+text-align:center;
+}
+
+/* Invoice Box */
+
+.invoice{
+background:white;
+padding:30px;
+width:210mm;
+min-height:297mm;
+margin:auto;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+/* Header */
+
+.invoice-header{
+display:flex;
+justify-content:space-between;
+border-bottom:2px solid #000;
+padding-bottom:10px;
+}
+
+.logo{
+width:80px;
 }
 
 table{
@@ -23,44 +88,94 @@ border-collapse:collapse;
 margin-top:20px;
 }
 
-td,th{
+table,th,td{
 border:1px solid black;
+}
+
+th,td{
 padding:8px;
 text-align:center;
 }
 
-.invoice{
-background:white;
-padding:20px;
-width:794px;
-margin:auto;
-border:2px solid black;
+.total{
+text-align:right;
+margin-top:20px;
 }
 
-.logo{
-text-align:center;
-font-size:22px;
-font-weight:bold;
+.signature{
+margin-top:80px;
+display:flex;
+justify-content:space-between;
 }
+
+.controls{
+margin:20px auto;
+width:500px;
+}
+
+.add-btn{
+background:#198754;
+margin-top:5px;
+}
+
+.history{
+margin-top:20px;
+}
+
 </style>
 </head>
 
 <body>
 
-<h2>Invoice Admin Panel</h2>
+<!-- LOGIN -->
 
-Customer Name <input id="cname">
-Labour Charge <input id="labour" type="number">
+<div class="login-box" id="loginBox">
+<h2>Admin Login</h2>
+<input type="password" id="pass" placeholder="Enter Password">
+<button onclick="login()">Login</button>
+</div>
 
-<hr>
+<!-- PANEL -->
 
-Item Name <input id="item">
-Qty <input id="qty" type="number">
-Price <input id="price" type="number">
+<div class="panel" id="panel">
 
-<button onclick="addItem()">Add Item</button>
+<h2>Invoice Generator</h2>
 
-<table id="table">
+<div class="controls">
+
+<input id="customer" placeholder="Customer Name">
+<input id="phone" placeholder="Customer Phone">
+
+<button class="add-btn" onclick="addRow()">Add Item</button>
+<button onclick="generateInvoice()">Generate Bill</button>
+<button onclick="downloadPDF()">Download PDF</button>
+
+</div>
+
+<!-- Invoice -->
+
+<div class="invoice" id="invoice">
+
+<div class="invoice-header">
+
+<div>
+<img src="images/logo.png" class="logo">
+<h2>M/S Tousif Power Solutions</h2>
+<p>Malda, West Bengal</p>
+<p>📞 8250687140</p>
+</div>
+
+<div>
+<p>Bill No: <span id="billNo"></span></p>
+<p>Date: <span id="date"></span></p>
+</div>
+
+</div>
+
+<h3>Customer: <span id="cName"></span></h3>
+<p>Phone: <span id="cPhone"></span></p>
+
+<table id="billTable">
 <tr>
 <th>Item</th>
 <th>Qty</th>
@@ -69,105 +184,136 @@ Price <input id="price" type="number">
 </tr>
 </table>
 
-<h3>Total: ₹ <span id="total">0</span></h3>
-
-<button onclick="saveBill()">Save Bill</button>
-<button onclick="printBill()">Print</button>
-<button onclick="pdfBill()">PDF</button>
-
-<hr>
-
-<div class="invoice" id="invoice">
-
-<div class="logo">
-M/S Tousif Power Solutions <br>
-Mobile: 8250687140
+<div class="total">
+<p>Labour: ₹<span id="labourTotal">0</span></p>
+<h2>Grand Total: ₹<span id="grandTotal">0</span></h2>
 </div>
 
-<hr>
+<div class="signature">
+<div>
+<p>Customer Signature</p>
+</div>
+<div>
+<p>Authorized Signature & Seal</p>
+</div>
+</div>
 
-Customer: <span id="icname"></span>
-<br><br>
+</div>
 
-<table id="itable"></table>
-
-<br>
-Labour: ₹ <span id="ilabour"></span>
-<br>
-Grand Total: ₹ <span id="itotal"></span>
-
-<br><br><br>
-
-Signature ___  
-Seal ___
+<!-- HISTORY -->
+<div class="history">
+<h3>Bill History</h3>
+<ul id="historyList"></ul>
+</div>
 
 </div>
 
 <script>
 
-let total=0;
-let items=[];
+/* Login */
 
-function addItem(){
-let name=item.value;
-let q=qty.value;
-let p=price.value;
+function login(){
+if(document.getElementById("pass").value==="TOUSIF"){
+document.getElementById("loginBox").style.display="none";
+document.getElementById("panel").style.display="block";
+}
+else{
+alert("Wrong Password");
+}
+}
 
-let t=q*p;
-total+=t;
+/* Bill */
 
-items.push({name,q,p,t});
+function addRow(){
+
+let table=document.getElementById("billTable");
 
 let row=table.insertRow();
-row.insertCell(0).innerText=name;
-row.insertCell(1).innerText=q;
-row.insertCell(2).innerText=p;
-row.insertCell(3).innerText=t;
 
-document.getElementById("total").innerText=total;
+row.innerHTML=`
+<td><input></td>
+<td><input type="number"></td>
+<td><input type="number"></td>
+<td class="rowTotal">0</td>
+`;
+
 }
 
-function saveBill(){
-localStorage.setItem("bill",JSON.stringify(items));
-alert("Saved");
-}
-
-function printBill(){
-generateInvoice();
-window.print();
-}
+/* Generate Bill */
 
 function generateInvoice(){
-icname.innerText=cname.value;
 
-itable.innerHTML="";
-items.forEach(i=>{
-itable.innerHTML+=`<tr>
-<td>${i.name}</td>
-<td>${i.q}</td>
-<td>${i.p}</td>
-<td>${i.t}</td>
-</tr>`;
+let rows=document.querySelectorAll("#billTable tr");
+let total=0;
+
+rows.forEach((row,i)=>{
+if(i===0) return;
+
+let qty=row.cells[1].children[0].value;
+let price=row.cells[2].children[0].value;
+
+let rowTotal=qty*price;
+row.cells[3].innerText=rowTotal;
+
+total+=rowTotal;
+
 });
 
-ilabour.innerText=labour.value;
+let labour=prompt("Enter Labour Charge");
+labour=Number(labour)||0;
 
-let gt=Number(total)+Number(labour.value);
-itotal.innerText=gt;
+document.getElementById("labourTotal").innerText=labour;
+
+let grand=total+labour;
+document.getElementById("grandTotal").innerText=grand;
+
+document.getElementById("cName").innerText=document.getElementById("customer").value;
+document.getElementById("cPhone").innerText=document.getElementById("phone").value;
+
+/* Bill Number */
+
+let billNo="TPS"+Math.floor(Math.random()*10000);
+document.getElementById("billNo").innerText=billNo;
+
+document.getElementById("date").innerText=new Date().toLocaleDateString();
+
+/* Save History */
+
+let history=JSON.parse(localStorage.getItem("bills")||"[]");
+
+history.push(billNo+" - ₹"+grand);
+
+localStorage.setItem("bills",JSON.stringify(history));
+
+showHistory();
+
 }
 
-async function pdfBill(){
-generateInvoice();
+/* History */
 
-const { jsPDF } = window.jspdf;
-let pdf=new jsPDF();
+function showHistory(){
 
-pdf.html(document.getElementById("invoice"),{
-callback:function(pdf){
-pdf.save("invoice.pdf");
-}
+let history=JSON.parse(localStorage.getItem("bills")||"[]");
+
+let list=document.getElementById("historyList");
+list.innerHTML="";
+
+history.forEach(b=>{
+let li=document.createElement("li");
+li.innerText=b;
+list.appendChild(li);
 });
 
+}
+
+showHistory();
+
+/* PDF */
+
+function downloadPDF(){
+let element=document.getElementById("invoice");
+
+html2pdf().from(element).save("Invoice.pdf");
 }
 
 </script>
