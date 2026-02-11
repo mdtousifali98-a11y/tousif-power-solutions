@@ -1,139 +1,172 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin Invoice Panel</title>
+<title>Admin Panel</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
 body{
-font-family:Poppins;
-background:#eef2f7;
+font-family:Arial;
 padding:20px;
+background:#f0f6ff;
 }
 
-.panel{
-max-width:800px;
-margin:auto;
+input,button{
+padding:8px;
+margin:5px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+td,th{
+border:1px solid black;
+padding:8px;
+text-align:center;
+}
+
+.invoice{
 background:white;
-padding:25px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,.2);
+padding:20px;
+width:794px;
+margin:auto;
+border:2px solid black;
 }
 
-input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border:1px solid #ccc;
-border-radius:8px;
-}
-
-button{
-background:#0b5ed7;
-color:white;
-padding:12px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-width:100%;
-font-size:16px;
+.logo{
+text-align:center;
+font-size:22px;
+font-weight:bold;
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="panel">
+<h2>Invoice Admin Panel</h2>
 
-<h2>Invoice Generator</h2>
+Customer Name <input id="cname">
+Labour Charge <input id="labour" type="number">
 
-<input id="customer" placeholder="Customer Name">
-<input id="item" placeholder="Item Name">
-<input id="qty" placeholder="Quantity">
-<input id="price" placeholder="Price">
-<input id="labour" placeholder="Labour Charge">
+<hr>
 
-<button onclick="generatePDF()">Generate Invoice PDF</button>
+Item Name <input id="item">
+Qty <input id="qty" type="number">
+Price <input id="price" type="number">
+
+<button onclick="addItem()">Add Item</button>
+
+<table id="table">
+<tr>
+<th>Item</th>
+<th>Qty</th>
+<th>Price</th>
+<th>Total</th>
+</tr>
+</table>
+
+<h3>Total: ₹ <span id="total">0</span></h3>
+
+<button onclick="saveBill()">Save Bill</button>
+<button onclick="printBill()">Print</button>
+<button onclick="pdfBill()">PDF</button>
+
+<hr>
+
+<div class="invoice" id="invoice">
+
+<div class="logo">
+M/S Tousif Power Solutions <br>
+Mobile: 8250687140
+</div>
+
+<hr>
+
+Customer: <span id="icname"></span>
+<br><br>
+
+<table id="itable"></table>
+
+<br>
+Labour: ₹ <span id="ilabour"></span>
+<br>
+Grand Total: ₹ <span id="itotal"></span>
+
+<br><br><br>
+
+Signature ___  
+Seal ___
 
 </div>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 <script>
 
-function generatePDF(){
+let total=0;
+let items=[];
+
+function addItem(){
+let name=item.value;
+let q=qty.value;
+let p=price.value;
+
+let t=q*p;
+total+=t;
+
+items.push({name,q,p,t});
+
+let row=table.insertRow();
+row.insertCell(0).innerText=name;
+row.insertCell(1).innerText=q;
+row.insertCell(2).innerText=p;
+row.insertCell(3).innerText=t;
+
+document.getElementById("total").innerText=total;
+}
+
+function saveBill(){
+localStorage.setItem("bill",JSON.stringify(items));
+alert("Saved");
+}
+
+function printBill(){
+generateInvoice();
+window.print();
+}
+
+function generateInvoice(){
+icname.innerText=cname.value;
+
+itable.innerHTML="";
+items.forEach(i=>{
+itable.innerHTML+=`<tr>
+<td>${i.name}</td>
+<td>${i.q}</td>
+<td>${i.p}</td>
+<td>${i.t}</td>
+</tr>`;
+});
+
+ilabour.innerText=labour.value;
+
+let gt=Number(total)+Number(labour.value);
+itotal.innerText=gt;
+}
+
+async function pdfBill(){
+generateInvoice();
 
 const { jsPDF } = window.jspdf;
-const doc = new jsPDF("p","mm","a4");
+let pdf=new jsPDF();
 
-let customer = document.getElementById("customer").value;
-let item = document.getElementById("item").value;
-let qty = Number(document.getElementById("qty").value);
-let price = Number(document.getElementById("price").value);
-let labour = Number(document.getElementById("labour").value);
-
-let subtotal = qty * price;
-let total = subtotal + labour;
-
-
-// Border
-doc.setDrawColor(0,120,200);
-doc.rect(5,5,200,287);
-
-
-// Header
-doc.setFontSize(22);
-doc.setTextColor(0,100,200);
-doc.text("M/S Tousif Power Solutions",20,20);
-
-doc.setFontSize(12);
-doc.setTextColor(0,0,0);
-doc.text("Malda, West Bengal",20,28);
-doc.text("Phone: 8250687140",20,35);
-
-
-// Invoice Info
-doc.text("Customer: "+customer,20,55);
-doc.text("Date: "+new Date().toLocaleDateString(),140,55);
-doc.text("Bill No: "+Math.floor(Math.random()*9999),140,65);
-
-
-// Table Header
-doc.setFillColor(0,150,200);
-doc.rect(20,80,170,10,"F");
-
-doc.setTextColor(255,255,255);
-doc.text("Item",25,87);
-doc.text("Qty",90,87);
-doc.text("Price",120,87);
-doc.text("Total",155,87);
-
-
-// Table Row
-doc.setTextColor(0,0,0);
-doc.text(item,25,100);
-doc.text(qty.toString(),90,100);
-doc.text(price.toString(),120,100);
-doc.text(subtotal.toString(),155,100);
-
-
-// Total
-doc.text("Labour Charge: "+labour,120,130);
-doc.text("Grand Total: "+total,120,145);
-
-
-// Signature
-doc.text("Customer Signature",20,250);
-doc.line(20,255,80,255);
-
-doc.text("Authorised Signature & Seal",130,250);
-doc.line(130,255,190,255);
-
-
-doc.save("Invoice.pdf");
+pdf.html(document.getElementById("invoice"),{
+callback:function(pdf){
+pdf.save("invoice.pdf");
+}
+});
 
 }
 
