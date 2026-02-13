@@ -14,8 +14,6 @@ background:#eaeaea;
 margin:0;
 }
 
-/* PANEL */
-
 .container{
 max-width:900px;
 margin:auto;
@@ -57,9 +55,9 @@ text-align:center;
 /* BILL */
 
 .bill{
-width:outomm;
-padding:outomm;
-border:3px solid red;
+width:210mm;
+padding:15mm;
+border:2px solid black;
 background:white;
 margin:auto;
 margin-top:20px;
@@ -67,7 +65,7 @@ display:none;
 }
 
 .logo{
-width:outopx;
+width:130px;
 margin-bottom:10px;
 }
 
@@ -82,11 +80,6 @@ justify-content:space-between;
 margin-top:100px;
 }
 
-@media print{
-button{display:none;}
-.bill{border:none;}
-}
-
 </style>
 </head>
 
@@ -95,9 +88,6 @@ button{display:none;}
 <div class="container">
 
 <h2>⚡ Tousif Power Billing Panel</h2>
-
-Company Logo Upload
-<input type="file" onchange="uploadLogo(event)">
 
 Customer Name
 <input id="name">
@@ -125,7 +115,7 @@ GST %
 <button onclick="generateBill()">Generate Bill</button>
 
 <h3>🔍 Invoice Search</h3>
-<input id="searchBill" placeholder="Enter Bill Number">
+<input id="searchInput" placeholder="Enter Bill Number">
 <button onclick="searchBill()">Search</button>
 
 </div>
@@ -134,7 +124,7 @@ GST %
 
 <div id="bill" class="bill">
 
-<img id="logoImg" class="logo">
+<img src="images/logo.png" class="logo">
 
 <div class="header">
 <div>
@@ -176,25 +166,6 @@ SGST : ₹ <span id="sgst"></span><br>
 
 <script>
 
-/* LOGO */
-
-function uploadLogo(e){
-let file=e.target.files[0]
-let reader=new FileReader()
-
-reader.onload=function(){
-localStorage.setItem("logo",reader.result)
-document.getElementById("logoImg").src=reader.result
-}
-
-reader.readAsDataURL(file)
-}
-
-window.onload=function(){
-let logo=localStorage.getItem("logo")
-if(logo) document.getElementById("logoImg").src=logo
-}
-
 /* ADD ITEM */
 
 function addItem(){
@@ -208,11 +179,10 @@ row.innerHTML=`
 
 /* SERIAL */
 
-let billSerial=localStorage.getItem("serial")||1001
+let billSerial=localStorage.getItem("serial") || 1001
 
 function generateBill(){
 
-let billData={}
 let table=itemTable
 let billTable=document.getElementById("billTable")
 
@@ -241,11 +211,11 @@ billTable.innerHTML+=`
 </tr>`
 }
 
-let labour=Number(labour.value)
-subtotal+=labour
+let labourVal=Number(labour.value)
+subtotal+=labourVal
 
-let gst=Number(gst.value)
-let gstAmt=subtotal*gst/100
+let gstVal=Number(gst.value)
+let gstAmt=subtotal*gstVal/100
 
 let cgst=gstAmt/2
 let sgst=gstAmt/2
@@ -266,16 +236,15 @@ grand.innerText=grand.toFixed(2)
 
 /* SAVE HISTORY */
 
-billData={
+let history=JSON.parse(localStorage.getItem("history") || "[]")
+
+history.push({
 billNo:billSerial,
 name:name.value,
 phone:phone.value,
-items,
-grand
-}
+grand:grand
+})
 
-let history=JSON.parse(localStorage.getItem("history")||"[]")
-history.push(billData)
 localStorage.setItem("history",JSON.stringify(history))
 
 billSerial++
@@ -287,12 +256,12 @@ localStorage.setItem("serial",billSerial)
 
 function searchBill(){
 
-let no=Number(searchBill.value)
-let history=JSON.parse(localStorage.getItem("history")||"[]")
+let num=Number(searchInput.value)
+let history=JSON.parse(localStorage.getItem("history") || "[]")
 
-let bill=history.find(b=>b.billNo==no)
+let bill=history.find(b=>b.billNo==num)
 
-if(bill) alert("Found Bill for "+bill.name)
+if(bill) alert("Bill Found for "+bill.name+" Total ₹"+bill.grand)
 else alert("Bill Not Found")
 
 }
@@ -300,7 +269,6 @@ else alert("Bill Not Found")
 /* PDF */
 
 function downloadPDF(){
-
 html2pdf().from(bill).save("Invoice.pdf")
 }
 
