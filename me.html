@@ -272,23 +272,6 @@ function downloadPDF(){
 html2pdf().from(bill).save("Invoice.pdf")
 }
 
-  /* whatsapp */
-  
-  function sendWhatsApp(){
-
-let phone = bPhone.innerText;
-
-if(phone==""){
-alert("Phone number missing");
-return;
-}
-
-let msg = Invoice ${billNo.innerText} Total ₹${grand.innerText};
-
-window.open(https://wa.me/91${phone}?text=${encodeURIComponent(msg)});
-
-}
-
 </script>
 
 </body>
