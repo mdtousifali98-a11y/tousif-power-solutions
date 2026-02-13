@@ -2,59 +2,46 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin Billing - Tousif Power</title>
+<title>Tousif Power Billing</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <style>
 
 body{
-font-family: Arial;
-background:#eef2f7;
+font-family:Arial;
+background:#eaeaea;
 margin:0;
 }
 
-/* LOGIN */
+/* Dashboard */
 
-.loginBox{
-width:300px;
-margin:120px auto;
+.container{
+max-width:900px;
+margin:auto;
+padding:15px;
 background:white;
-padding:20px;
+margin-top:20px;
 border-radius:10px;
 box-shadow:0 0 10px gray;
-text-align:center;
 }
 
 input{
-width:95%;
+width:100%;
 padding:8px;
-margin:5px;
+margin:5px 0;
 }
 
 button{
 padding:8px 15px;
-cursor:pointer;
 background:#0b7dda;
 color:white;
 border:none;
 border-radius:5px;
+cursor:pointer;
 }
 
-/* DASHBOARD */
-
-.dashboard{
-display:none;
-padding:20px;
-}
-
-.card{
-background:white;
-padding:15px;
-border-radius:10px;
-margin-bottom:15px;
-box-shadow:0 0 8px gray;
-}
+/* TABLE */
 
 table{
 width:100%;
@@ -68,12 +55,28 @@ padding:6px;
 text-align:center;
 }
 
-.billBox{
+/* BILL A4 */
+
+.bill{
+width:210mm;
+min-height:297mm;
+padding:20px;
 border:2px solid black;
-padding:15px;
+background:white;
+margin:auto;
 margin-top:20px;
 display:none;
-background:white;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+}
+
+.sign{
+display:flex;
+justify-content:space-between;
+margin-top:80px;
 }
 
 </style>
@@ -81,28 +84,15 @@ background:white;
 
 <body>
 
-<!-- LOGIN -->
-
-<div class="loginBox" id="loginBox">
-<h2>Admin Login</h2>
-<input type="password" id="pass" placeholder="Enter Password">
-<button onclick="login()">Login</button>
-</div>
-
-
-<!-- DASHBOARD -->
-
-<div class="dashboard" id="dash">
+<div class="container">
 
 <h2>⚡ Tousif Power Billing Panel</h2>
 
-<div class="card">
-
 Customer Name
-<input id="custName">
+<input id="name">
 
 Customer Phone
-<input id="custPhone">
+<input id="phone">
 
 <table id="itemTable">
 <tr>
@@ -126,16 +116,26 @@ GST %
 
 </div>
 
+<!-- BILL -->
 
-<!-- BILL DESIGN -->
+<div id="bill" class="bill">
 
-<div id="bill" class="billBox">
-
+<div class="header">
+<div>
 <h2>M/S Tousif Power Solutions</h2>
-Malda, West Bengal <br><br>
+Malda, West Bengal <br>
+GSTIN : 19ABCDE1234F1Z5
+</div>
 
-Bill No : <span id="billNo"></span> <br>
-Customer : <span id="bName"></span> <br>
+<div>
+Bill No : <span id="billNo"></span><br>
+Date : <span id="date"></span>
+</div>
+</div>
+
+<hr>
+
+Customer : <span id="bName"></span><br>
 Phone : <span id="bPhone"></span>
 
 <table id="billTable">
@@ -155,38 +155,23 @@ SGST : ₹ <span id="sgst"></span><br>
 
 <h3>Grand Total : ₹ <span id="grand"></span></h3>
 
+<div class="sign">
+<div>
+Customer Signature
+</div>
+
+<div>
+Authorized Signature & Seal
+</div>
+</div>
+
 <br>
 <button onclick="downloadPDF()">Download PDF</button>
 
 </div>
 
 
-<!-- HISTORY -->
-
-<div class="card">
-<h3>Invoice History</h3>
-<ul id="history"></ul>
-</div>
-
-</div>
-
-
 <script>
-
-/* LOGIN */
-
-function login(){
-let p=document.getElementById("pass").value
-
-if(p=="1234"){
-document.getElementById("loginBox").style.display="none"
-document.getElementById("dash").style.display="block"
-loadHistory()
-}else{
-alert("Wrong Password")
-}
-}
-
 
 /* ADD ITEM */
 
@@ -200,13 +185,11 @@ row.innerHTML=`
 <td><input type="number" value="0"></td>
 <td class="t">0</td>
 `
-
 }
 
+/* SERIAL */
 
-/* BILL GENERATE */
-
-let serial=localStorage.getItem("bill")||1001
+let billSerial=localStorage.getItem("serial")||1001
 
 function generateBill(){
 
@@ -234,8 +217,7 @@ billTable.innerHTML+=`
 <td>${qty}</td>
 <td>${price}</td>
 <td>${total}</td>
-</tr>
-`
+</tr>`
 }
 
 let labour=Number(document.getElementById("labour").value)
@@ -243,57 +225,41 @@ subtotal+=labour
 
 let gst=Number(document.getElementById("gst").value)
 let gstAmt=subtotal*gst/100
+
 let cgst=gstAmt/2
 let sgst=gstAmt/2
 let grand=subtotal+gstAmt
 
 document.getElementById("bill").style.display="block"
 
-document.getElementById("billNo").innerText=serial
-document.getElementById("bName").innerText=document.getElementById("custName").value
-document.getElementById("bPhone").innerText=document.getElementById("custPhone").value
+document.getElementById("billNo").innerText=billSerial
+document.getElementById("date").innerText=new Date().toLocaleDateString()
+
+document.getElementById("bName").innerText=document.getElementById("name").value
+document.getElementById("bPhone").innerText=document.getElementById("phone").value
 
 document.getElementById("sub").innerText=subtotal.toFixed(2)
 document.getElementById("cgst").innerText=cgst.toFixed(2)
 document.getElementById("sgst").innerText=sgst.toFixed(2)
 document.getElementById("grand").innerText=grand.toFixed(2)
 
-
-/* SAVE HISTORY */
-
-let data="Bill "+serial+" - "+document.getElementById("custName").value
-let history=JSON.parse(localStorage.getItem("history")||"[]")
-history.push(data)
-localStorage.setItem("history",JSON.stringify(history))
-
-loadHistory()
-
-serial++
-localStorage.setItem("bill",serial)
+billSerial++
+localStorage.setItem("serial",billSerial)
 
 }
-
 
 /* PDF */
 
 function downloadPDF(){
-html2pdf().from(document.getElementById("bill")).save()
+
+let opt={
+margin:5,
+filename:'Invoice.pdf',
+html2canvas:{scale:2},
+jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
 }
 
-
-/* LOAD HISTORY */
-
-function loadHistory(){
-
-let history=JSON.parse(localStorage.getItem("history")||"[]")
-
-let list=document.getElementById("history")
-list.innerHTML=""
-
-history.forEach(h=>{
-list.innerHTML+="<li>"+h+"</li>"
-})
-
+html2pdf().set(opt).from(document.getElementById("bill")).save()
 }
 
 </script>
