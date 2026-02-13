@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Admin Panel - Tousif Power Solutions</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<title>Admin Panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
@@ -13,27 +11,32 @@
 
 body{
 font-family:Poppins;
-background:#f2f4f8;
+background:#f0f2f5;
 margin:0;
 }
 
-/* Login */
+.dark{
+background:#1e1e1e;
+color:white;
+}
 
-.login-box{
-width:320px;
+/* LOGIN */
+
+.login{
+width:300px;
 background:white;
-padding:30px;
 margin:120px auto;
+padding:30px;
+border-radius:10px;
 text-align:center;
-border-radius:12px;
 box-shadow:0 5px 20px rgba(0,0,0,0.2);
 }
 
-input{
+input,button{
 width:100%;
 padding:10px;
 margin:8px 0;
-border-radius:8px;
+border-radius:6px;
 border:1px solid #ccc;
 }
 
@@ -41,51 +44,52 @@ button{
 background:#0b5ed7;
 color:white;
 border:none;
-padding:10px;
-width:100%;
-border-radius:8px;
 cursor:pointer;
 }
 
-/* Panel */
+/* PANEL */
 
 .panel{
 display:none;
 padding:20px;
 }
 
-.panel h2{
-text-align:center;
+/* DARK BUTTON */
+
+.darkBtn{
+position:fixed;
+top:20px;
+right:20px;
 }
 
-/* Invoice Box */
+/* INVOICE */
 
 .invoice{
-background:white;
-padding:30px;
 width:210mm;
-min-height:297mm;
+height:297mm;
+background:white;
 margin:auto;
-box-shadow:0 5px 20px rgba(0,0,0,0.2);
+padding:25px;
 }
 
-/* Header */
+.dark .invoice{
+background:#2c2c2c;
+}
 
-.invoice-header{
+.header{
 display:flex;
 justify-content:space-between;
-border-bottom:2px solid #000;
-padding-bottom:10px;
+border-bottom:2px solid black;
 }
 
 .logo{
-width:80px;
+width:60px;
 }
 
 table{
 width:100%;
 border-collapse:collapse;
-margin-top:20px;
+margin-top:15px;
 }
 
 table,th,td{
@@ -97,29 +101,10 @@ padding:8px;
 text-align:center;
 }
 
-.total{
-text-align:right;
-margin-top:20px;
-}
-
-.signature{
-margin-top:80px;
+.sign{
 display:flex;
 justify-content:space-between;
-}
-
-.controls{
-margin:20px auto;
-width:500px;
-}
-
-.add-btn{
-background:#198754;
-margin-top:5px;
-}
-
-.history{
-margin-top:20px;
+margin-top:60px;
 }
 
 </style>
@@ -127,11 +112,14 @@ margin-top:20px;
 
 <body>
 
+<!-- DARK MODE -->
+<button class="darkBtn" onclick="toggleDark()">🌙</button>
+
 <!-- LOGIN -->
 
-<div class="login-box" id="loginBox">
-<h2>Admin Login</h2>
-<input type="password" id="pass" placeholder="Enter Password">
+<div class="login" id="login">
+<h3>Admin Login</h3>
+<input type="password" id="pass">
 <button onclick="login()">Login</button>
 </div>
 
@@ -139,30 +127,29 @@ margin-top:20px;
 
 <div class="panel" id="panel">
 
-<h2>Invoice Generator</h2>
-
-<div class="controls">
-
 <input id="customer" placeholder="Customer Name">
-<input id="phone" placeholder="Customer Phone">
+<input id="phone" placeholder="Phone">
+<input id="address" placeholder="Address">
+<input id="gstRate" placeholder="GST %" value="18">
 
-<button class="add-btn" onclick="addRow()">Add Item</button>
-<button onclick="generateInvoice()">Generate Bill</button>
+<button onclick="addRow()">Add Item</button>
+<button onclick="generateBill()">Generate Bill</button>
 <button onclick="downloadPDF()">Download PDF</button>
+<button onclick="sendWhatsApp()">Send WhatsApp</button>
 
 </div>
 
-<!-- Invoice -->
+<!-- INVOICE -->
 
 <div class="invoice" id="invoice">
 
-<div class="invoice-header">
+<div class="header">
 
 <div>
 <img src="images/logo.png" class="logo">
 <h2>M/S Tousif Power Solutions</h2>
 <p>Malda, West Bengal</p>
-<p>📞 8250687140</p>
+<p>GSTIN: 19ABCDE1234F1Z5</p>
 </div>
 
 <div>
@@ -172,10 +159,12 @@ margin-top:20px;
 
 </div>
 
-<h3>Customer: <span id="cName"></span></h3>
+<h3>Customer Details</h3>
+<p>Name: <span id="cName"></span></p>
 <p>Phone: <span id="cPhone"></span></p>
+<p>Address: <span id="cAddress"></span></p>
 
-<table id="billTable">
+<table id="table">
 <tr>
 <th>Item</th>
 <th>Qty</th>
@@ -184,136 +173,117 @@ margin-top:20px;
 </tr>
 </table>
 
-<div class="total">
-<p>Labour: ₹<span id="labourTotal">0</span></p>
-<h2>Grand Total: ₹<span id="grandTotal">0</span></h2>
-</div>
+<h3>Tax Details</h3>
+<p>CGST: ₹ <span id="cgst"></span></p>
+<p>SGST: ₹ <span id="sgst"></span></p>
 
-<div class="signature">
-<div>
-<p>Customer Signature</p>
-</div>
-<div>
-<p>Authorized Signature & Seal</p>
-</div>
-</div>
+<h2>Grand Total: ₹ <span id="grand"></span></h2>
 
-</div>
-
-<!-- HISTORY -->
-<div class="history">
-<h3>Bill History</h3>
-<ul id="historyList"></ul>
+<div class="sign">
+<div>Customer Signature</div>
+<div>Authorized Signature & Seal</div>
 </div>
 
 </div>
 
 <script>
 
-/* Login */
+/* LOGIN */
 
 function login(){
-if(document.getElementById("pass").value==="TOUSIF"){
-document.getElementById("loginBox").style.display="none";
-document.getElementById("panel").style.display="block";
+if(pass.value==="TOUSIF"){
+login.style.display="none";
+panel.style.display="block";
 }
-else{
-alert("Wrong Password");
-}
+else alert("Wrong Password");
 }
 
-/* Bill */
+/* DARK MODE */
+
+function toggleDark(){
+document.body.classList.toggle("dark");
+}
+
+/* SERIAL BILL */
+
+let billNumber = localStorage.getItem("billNumber") || 1;
+
+/* ADD ROW */
 
 function addRow(){
-
-let table=document.getElementById("billTable");
-
-let row=table.insertRow();
+let row = table.insertRow();
 
 row.innerHTML=`
 <td><input></td>
 <td><input type="number"></td>
 <td><input type="number"></td>
-<td class="rowTotal">0</td>
+<td>0</td>
 `;
-
 }
 
-/* Generate Bill */
+/* GENERATE BILL */
 
-function generateInvoice(){
+function generateBill(){
 
-let rows=document.querySelectorAll("#billTable tr");
-let total=0;
+let rows=document.querySelectorAll("#table tr");
+let subtotal=0;
 
 rows.forEach((row,i)=>{
-if(i===0) return;
+if(i==0) return;
 
 let qty=row.cells[1].children[0].value;
 let price=row.cells[2].children[0].value;
 
-let rowTotal=qty*price;
-row.cells[3].innerText=rowTotal;
-
-total+=rowTotal;
-
+let t=qty*price;
+row.cells[3].innerText=t;
+subtotal+=t;
 });
 
-let labour=prompt("Enter Labour Charge");
-labour=Number(labour)||0;
+let gstRateVal = gstRate.value;
 
-document.getElementById("labourTotal").innerText=labour;
+let gst = subtotal * gstRateVal / 100;
+let cgst = gst/2;
+let sgst = gst/2;
 
-let grand=total+labour;
-document.getElementById("grandTotal").innerText=grand;
+let grand = subtotal + gst;
 
-document.getElementById("cName").innerText=document.getElementById("customer").value;
-document.getElementById("cPhone").innerText=document.getElementById("phone").value;
+cgst.innerText=cgst.toFixed(2);
+sgst.innerText=sgst.toFixed(2);
+grand.innerText=grand.toFixed(2);
 
-/* Bill Number */
+cName.innerText=customer.value;
+cPhone.innerText=phone.value;
+cAddress.innerText=address.value;
 
-let billNo="TPS"+Math.floor(Math.random()*10000);
-document.getElementById("billNo").innerText=billNo;
+billNo.innerText="TPS-"+billNumber;
+date.innerText=new Date().toLocaleDateString();
 
-document.getElementById("date").innerText=new Date().toLocaleDateString();
+localStorage.setItem("billNumber",++billNumber);
 
-/* Save History */
+/* CLOUD STORAGE */
 
-let history=JSON.parse(localStorage.getItem("bills")||"[]");
+let billData={
+name:customer.value,
+amount:grand
+};
 
-history.push(billNo+" - ₹"+grand);
-
-localStorage.setItem("bills",JSON.stringify(history));
-
-showHistory();
-
-}
-
-/* History */
-
-function showHistory(){
-
-let history=JSON.parse(localStorage.getItem("bills")||"[]");
-
-let list=document.getElementById("historyList");
-list.innerHTML="";
-
-history.forEach(b=>{
-let li=document.createElement("li");
-li.innerText=b;
-list.appendChild(li);
-});
+let history=JSON.parse(localStorage.getItem("history")||"[]");
+history.push(billData);
+localStorage.setItem("history",JSON.stringify(history));
 
 }
-
-showHistory();
 
 /* PDF */
 
 function downloadPDF(){
-let element=document.getElementById("invoice");
+html2pdf().from(invoice).save("Invoice.pdf");
+}
 
-html2pdf().from(element).save("Invoice.pdf");
+/* WHATSAPP */
+
+function sendWhatsApp(){
+let msg=Bill Generated - Amount ₹ ${grand.innerText};
+window.open(https://wa.me/91${phone.value}?text=${msg});
 }
 
 </script>
