@@ -2,39 +2,78 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin Billing Panel</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<title>Admin Billing - Tousif Power</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <style>
+
 body{
 font-family: Arial;
+background:#eef2f7;
 margin:0;
-background:#f2f2f2;
 }
 
-.dark{
-background:#121212;
-color:white;
-}
+/* LOGIN */
 
-.container{
+.loginBox{
+width:300px;
+margin:120px auto;
+background:white;
 padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+text-align:center;
 }
 
-input,select,button{
+input{
+width:95%;
 padding:8px;
 margin:5px;
 }
 
-.bill-box{
+button{
+padding:8px 15px;
+cursor:pointer;
+background:#0b7dda;
+color:white;
+border:none;
+border-radius:5px;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+display:none;
+padding:20px;
+}
+
+.card{
 background:white;
 padding:15px;
 border-radius:10px;
+margin-bottom:15px;
+box-shadow:0 0 8px gray;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
 margin-top:10px;
 }
 
-.dark .bill-box{
-background:#1e1e1e;
+table,th,td{
+border:1px solid black;
+padding:6px;
+text-align:center;
+}
+
+.billBox{
+border:2px solid black;
+padding:15px;
+margin-top:20px;
+display:none;
+background:white;
 }
 
 </style>
@@ -42,129 +81,220 @@ background:#1e1e1e;
 
 <body>
 
-<div class="container">
+<!-- LOGIN -->
 
-<h2>⚡ Admin Billing Dashboard</h2>
+<div class="loginBox" id="loginBox">
+<h2>Admin Login</h2>
+<input type="password" id="pass" placeholder="Enter Password">
+<button onclick="login()">Login</button>
+</div>
 
-<button onclick="toggleDark()">🌙 Toggle Dark Mode</button>
 
-<hr>
+<!-- DASHBOARD -->
 
-<h3>Generate Invoice</h3>
+<div class="dashboard" id="dash">
 
-Customer Name  
+<h2>⚡ Tousif Power Billing Panel</h2>
+
+<div class="card">
+
+Customer Name
 <input id="custName">
 
-Amount  
-<input id="amount" type="number">
+Customer Phone
+<input id="custPhone">
 
-GST %  
+<table id="itemTable">
+<tr>
+<th>Item</th>
+<th>Qty</th>
+<th>Price</th>
+<th>Total</th>
+</tr>
+</table>
+
+<button onclick="addItem()">Add Item</button>
+
+Labour Charge
+<input id="labour" type="number" value="0">
+
+GST %
 <input id="gst" type="number" value="18">
 
-<br>
-
+<br><br>
 <button onclick="generateBill()">Generate Bill</button>
-
-<div id="billOutput" class="bill-box"></div>
-
-<hr>
-
-<h3>QR Payment</h3>
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay" />
-
-<hr>
-
-<h3>Digital Signature Upload</h3>
-<input type="file" id="signUpload">
-
-<hr>
-
-<h3>Online Booking Link</h3>
-<input id="bookingLink" placeholder="Paste booking URL">
-
-<hr>
-
-<h3>Sales Graph</h3>
-<canvas id="salesChart"></canvas>
 
 </div>
 
+
+<!-- BILL DESIGN -->
+
+<div id="bill" class="billBox">
+
+<h2>M/S Tousif Power Solutions</h2>
+Malda, West Bengal <br><br>
+
+Bill No : <span id="billNo"></span> <br>
+Customer : <span id="bName"></span> <br>
+Phone : <span id="bPhone"></span>
+
+<table id="billTable">
+<tr>
+<th>Item</th>
+<th>Qty</th>
+<th>Price</th>
+<th>Total</th>
+</tr>
+</table>
+
+<br>
+
+Subtotal : ₹ <span id="sub"></span><br>
+CGST : ₹ <span id="cgst"></span><br>
+SGST : ₹ <span id="sgst"></span><br>
+
+<h3>Grand Total : ₹ <span id="grand"></span></h3>
+
+<br>
+<button onclick="downloadPDF()">Download PDF</button>
+
+</div>
+
+
+<!-- HISTORY -->
+
+<div class="card">
+<h3>Invoice History</h3>
+<ul id="history"></ul>
+</div>
+
+</div>
+
+
 <script>
 
-// Serial Number
-let serial = localStorage.getItem("billSerial") || 1
+/* LOGIN */
+
+function login(){
+let p=document.getElementById("pass").value
+
+if(p=="1234"){
+document.getElementById("loginBox").style.display="none"
+document.getElementById("dash").style.display="block"
+loadHistory()
+}else{
+alert("Wrong Password")
+}
+}
+
+
+/* ADD ITEM */
+
+function addItem(){
+
+let row=document.getElementById("itemTable").insertRow()
+
+row.innerHTML=`
+<td><input></td>
+<td><input type="number" value="1"></td>
+<td><input type="number" value="0"></td>
+<td class="t">0</td>
+`
+
+}
+
+
+/* BILL GENERATE */
+
+let serial=localStorage.getItem("bill")||1001
 
 function generateBill(){
 
-let name = document.getElementById("custName").value
-let amount = Number(document.getElementById("amount").value)
-let gst = Number(document.getElementById("gst").value)
+let table=document.getElementById("itemTable")
+let billTable=document.getElementById("billTable")
 
-let gstAmt = amount * gst / 100
-let cgst = gstAmt / 2
-let sgst = gstAmt / 2
-let total = amount + gstAmt
+billTable.innerHTML=`<tr>
+<th>Item</th><th>Qty</th><th>Price</th><th>Total</th>
+</tr>`
 
-let billNo = "INV" + serial
+let subtotal=0
+
+for(let i=1;i<table.rows.length;i++){
+
+let item=table.rows[i].cells[0].children[0].value
+let qty=Number(table.rows[i].cells[1].children[0].value)
+let price=Number(table.rows[i].cells[2].children[0].value)
+
+let total=qty*price
+subtotal+=total
+
+billTable.innerHTML+=`
+<tr>
+<td>${item}</td>
+<td>${qty}</td>
+<td>${price}</td>
+<td>${total}</td>
+</tr>
+`
+}
+
+let labour=Number(document.getElementById("labour").value)
+subtotal+=labour
+
+let gst=Number(document.getElementById("gst").value)
+let gstAmt=subtotal*gst/100
+let cgst=gstAmt/2
+let sgst=gstAmt/2
+let grand=subtotal+gstAmt
+
+document.getElementById("bill").style.display="block"
+
+document.getElementById("billNo").innerText=serial
+document.getElementById("bName").innerText=document.getElementById("custName").value
+document.getElementById("bPhone").innerText=document.getElementById("custPhone").value
+
+document.getElementById("sub").innerText=subtotal.toFixed(2)
+document.getElementById("cgst").innerText=cgst.toFixed(2)
+document.getElementById("sgst").innerText=sgst.toFixed(2)
+document.getElementById("grand").innerText=grand.toFixed(2)
+
+
+/* SAVE HISTORY */
+
+let data="Bill "+serial+" - "+document.getElementById("custName").value
+let history=JSON.parse(localStorage.getItem("history")||"[]")
+history.push(data)
+localStorage.setItem("history",JSON.stringify(history))
+
+loadHistory()
 
 serial++
-localStorage.setItem("billSerial", serial)
+localStorage.setItem("bill",serial)
 
-// Save Cloud Storage (Demo)
-let bills = JSON.parse(localStorage.getItem("bills") || "[]")
-
-bills.push({
-billNo,name,amount,total
-})
-
-localStorage.setItem("bills", JSON.stringify(bills))
-
-document.getElementById("billOutput").innerHTML = `
-<h3>Invoice : ${billNo}</h3>
-Customer : ${name} <br>
-Amount : ₹${amount} <br>
-CGST : ₹${cgst.toFixed(2)} <br>
-SGST : ₹${sgst.toFixed(2)} <br>
-Total : ₹${total.toFixed(2)} <br>
-
-<button onclick="sendWhatsapp('${name}',${total})">
-Send WhatsApp Invoice
-</button>
-`
-
-updateChart()
 }
 
-function sendWhatsapp(name,total){
-let msg = Invoice for ${name} Amount ₹${total}
-window.open(https://wa.me/?text=${msg})
+
+/* PDF */
+
+function downloadPDF(){
+html2pdf().from(document.getElementById("bill")).save()
 }
 
-function toggleDark(){
-document.body.classList.toggle("dark")
-}
 
-function updateChart(){
+/* LOAD HISTORY */
 
-let bills = JSON.parse(localStorage.getItem("bills") || "[]")
+function loadHistory(){
 
-let data = bills.map(b => b.total)
-let labels = bills.map(b => b.billNo)
+let history=JSON.parse(localStorage.getItem("history")||"[]")
 
-new Chart(document.getElementById("salesChart"),{
-type:"bar",
-data:{
-labels:labels,
-datasets:[{
-label:"Sales",
-data:data
-}]
-}
+let list=document.getElementById("history")
+list.innerHTML=""
+
+history.forEach(h=>{
+list.innerHTML+="<li>"+h+"</li>"
 })
 
 }
-
-updateChart()
 
 </script>
 
