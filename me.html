@@ -14,7 +14,7 @@ background:#eaeaea;
 margin:0;
 }
 
-/* Dashboard */
+/* PANEL */
 
 .container{
 max-width:900px;
@@ -39,9 +39,8 @@ color:white;
 border:none;
 border-radius:5px;
 cursor:pointer;
+margin-top:5px;
 }
-
-/* TABLE */
 
 table{
 width:100%;
@@ -55,17 +54,21 @@ padding:6px;
 text-align:center;
 }
 
-/* BILL A4 */
+/* BILL */
 
 .bill{
-width:outomm;
-min-height:automm;
+width:210mm;
 padding:15mm;
 border:2px solid black;
 background:white;
 margin:auto;
 margin-top:20px;
 display:none;
+}
+
+.logo{
+width:120px;
+margin-bottom:10px;
 }
 
 .header{
@@ -76,7 +79,12 @@ justify-content:space-between;
 .sign{
 display:flex;
 justify-content:space-between;
-margin-top:80px;
+margin-top:100px;
+}
+
+@media print{
+button{display:none;}
+.bill{border:none;}
 }
 
 </style>
@@ -87,6 +95,9 @@ margin-top:80px;
 <div class="container">
 
 <h2>⚡ Tousif Power Billing Panel</h2>
+
+Company Logo Upload
+<input type="file" onchange="uploadLogo(event)">
 
 Customer Name
 <input id="name">
@@ -111,14 +122,19 @@ Labour Charge
 GST %
 <input id="gst" type="number" value="18">
 
-<br><br>
 <button onclick="generateBill()">Generate Bill</button>
+
+<h3>🔍 Invoice Search</h3>
+<input id="searchBill" placeholder="Enter Bill Number">
+<button onclick="searchBill()">Search</button>
 
 </div>
 
 <!-- BILL -->
 
 <div id="bill" class="bill">
+
+<img id="logoImg" class="logo">
 
 <div class="header">
 <div>
@@ -138,14 +154,7 @@ Date : <span id="date"></span>
 Customer : <span id="bName"></span><br>
 Phone : <span id="bPhone"></span>
 
-<table id="billTable">
-<tr>
-<th>Item</th>
-<th>Qty</th>
-<th>Price</th>
-<th>Total</th>
-</tr>
-</table>
+<table id="billTable"></table>
 
 <br>
 
@@ -156,35 +165,45 @@ SGST : ₹ <span id="sgst"></span><br>
 <h3>Grand Total : ₹ <span id="grand"></span></h3>
 
 <div class="sign">
-<div>
-Customer Signature
+<div>Customer Signature</div>
+<div>Authorized Signature & Seal</div>
 </div>
 
-<div>
-Authorized Signature & Seal
-</div>
-</div>
-
-<br>
 <button onclick="downloadPDF()">Download PDF</button>
+<button onclick="sendWhatsApp()">Send WhatsApp</button>
 
 </div>
-
 
 <script>
+
+/* LOGO */
+
+function uploadLogo(e){
+let file=e.target.files[0]
+let reader=new FileReader()
+
+reader.onload=function(){
+localStorage.setItem("logo",reader.result)
+document.getElementById("logoImg").src=reader.result
+}
+
+reader.readAsDataURL(file)
+}
+
+window.onload=function(){
+let logo=localStorage.getItem("logo")
+if(logo) document.getElementById("logoImg").src=logo
+}
 
 /* ADD ITEM */
 
 function addItem(){
-
-let row=document.getElementById("itemTable").insertRow()
-
+let row=itemTable.insertRow()
 row.innerHTML=`
 <td><input></td>
 <td><input type="number" value="1"></td>
 <td><input type="number" value="0"></td>
-<td class="t">0</td>
-`
+<td>0</td>`
 }
 
 /* SERIAL */
@@ -193,14 +212,14 @@ let billSerial=localStorage.getItem("serial")||1001
 
 function generateBill(){
 
-let table=document.getElementById("itemTable")
+let billData={}
+let table=itemTable
 let billTable=document.getElementById("billTable")
 
-billTable.innerHTML=`<tr>
-<th>Item</th><th>Qty</th><th>Price</th><th>Total</th>
-</tr>`
+billTable.innerHTML="<tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr>"
 
 let subtotal=0
+let items=[]
 
 for(let i=1;i<table.rows.length;i++){
 
@@ -211,6 +230,8 @@ let price=Number(table.rows[i].cells[2].children[0].value)
 let total=qty*price
 subtotal+=total
 
+items.push({item,qty,price,total})
+
 billTable.innerHTML+=`
 <tr>
 <td>${item}</td>
@@ -220,31 +241,59 @@ billTable.innerHTML+=`
 </tr>`
 }
 
-let labour=Number(document.getElementById("labour").value)
+let labour=Number(labour.value)
 subtotal+=labour
 
-let gst=Number(document.getElementById("gst").value)
+let gst=Number(gst.value)
 let gstAmt=subtotal*gst/100
 
 let cgst=gstAmt/2
 let sgst=gstAmt/2
 let grand=subtotal+gstAmt
 
-document.getElementById("bill").style.display="block"
+bill.style.display="block"
 
-document.getElementById("billNo").innerText=billSerial
-document.getElementById("date").innerText=new Date().toLocaleDateString()
+billNo.innerText=billSerial
+date.innerText=new Date().toLocaleDateString()
 
-document.getElementById("bName").innerText=document.getElementById("name").value
-document.getElementById("bPhone").innerText=document.getElementById("phone").value
+bName.innerText=name.value
+bPhone.innerText=phone.value
 
-document.getElementById("sub").innerText=subtotal.toFixed(2)
-document.getElementById("cgst").innerText=cgst.toFixed(2)
-document.getElementById("sgst").innerText=sgst.toFixed(2)
-document.getElementById("grand").innerText=grand.toFixed(2)
+sub.innerText=subtotal.toFixed(2)
+cgst.innerText=cgst.toFixed(2)
+sgst.innerText=sgst.toFixed(2)
+grand.innerText=grand.toFixed(2)
+
+/* SAVE HISTORY */
+
+billData={
+billNo:billSerial,
+name:name.value,
+phone:phone.value,
+items,
+grand
+}
+
+let history=JSON.parse(localStorage.getItem("history")||"[]")
+history.push(billData)
+localStorage.setItem("history",JSON.stringify(history))
 
 billSerial++
 localStorage.setItem("serial",billSerial)
+
+}
+
+/* SEARCH */
+
+function searchBill(){
+
+let no=Number(searchBill.value)
+let history=JSON.parse(localStorage.getItem("history")||"[]")
+
+let bill=history.find(b=>b.billNo==no)
+
+if(bill) alert("Found Bill for "+bill.name)
+else alert("Bill Not Found")
 
 }
 
@@ -252,14 +301,17 @@ localStorage.setItem("serial",billSerial)
 
 function downloadPDF(){
 
-let opt={
-margin:5,
-filename:'Invoice.pdf',
-html2canvas:{scale:2},
-jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
+html2pdf().from(bill).save("Invoice.pdf")
 }
 
-html2pdf().set(opt).from(document.getElementById("bill")).save()
+/* WHATSAPP */
+
+function sendWhatsApp(){
+
+let msg=Invoice ${billNo.innerText} Total ₹${grand.innerText}
+let phone=bPhone.innerText
+
+window.open(https://wa.me/91${phone}?text=${encodeURIComponent(msg)})
 }
 
 </script>
