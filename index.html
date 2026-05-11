@@ -1,608 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
+<title>M/S Tousif Power Solutions</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tousif Enterprise | Electrical Contractor in Malda</title>
-
-<meta name="description" content="Tousif Enterprise provides HT, LT, Transformer, House Wiring and Electrical Maintenance Services in Malda, West Bengal.">
-
-<meta name="keywords" content="Tousif Enterprise, Electrical Contractor Malda, HT Work, LT Work, Transformer, Wiring">
-
-<meta name="author" content="Md Tousif Ali">
-
-<link rel="icon" href="favicon.ico">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
+html{scroll-behavior:smooth}
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
-text-decoration:none;
-}
-
-body{
-background:#f8fafc;
-color:#111827;
-overflow-x:hidden;
-}
-
-/* HEADER */
-
+/* Header */
 header{
 background:linear-gradient(90deg,#0b5ed7,#198754);
-padding:15px 20px;
+color:white;
 position:sticky;
 top:0;
 z-index:999;
-box-shadow:0 4px 15px rgba(0,0,0,0.1);
 }
-
 .nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
 max-width:1200px;
 margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
 }
+.menu a{margin:0 10px;font-weight:500}
 
-.logo{
-font-size:28px;
-font-weight:700;
-color:white;
-}
-
-.menu{
-display:flex;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.menu a{
-color:white;
-font-weight:500;
-transition:0.3s;
-}
-
-.menu a:hover{
-color:#ffe082;
-}
-
-/* HERO */
-
+/* Hero */
 .hero{
-position:relative;
-padding:120px 20px;
-background:linear-gradient(135deg,#dbeafe,#ecfeff);
-overflow:hidden;
-}
-
-.hero-wrap{
-max-width:1300px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px;
-}
-
-/* SIDE IMAGES */
-
-.side-img{
-width:240px;
-height:420px;
-object-fit:cover;
-border-radius:20px;
-box-shadow:0 8px 20px rgba(0,0,0,0.15);
-}
-
-/* HERO CENTER */
-
-.hero-center{
-flex:1;
+padding:100px 20px;
+background:linear-gradient(135deg,#eef2ff,#ecfeff);
 text-align:center;
 }
-
-.hero-center h1{
-font-size:52px;
-margin-bottom:20px;
-}
-
-.hero-center p{
-font-size:20px;
-margin-bottom:30px;
-color:#475569;
-}
-
 .btn{
-display:inline-block;
-padding:14px 30px;
 background:#0b5ed7;
 color:white;
-border-radius:12px;
-font-weight:600;
-transition:0.3s;
-box-shadow:0 6px 20px rgba(11,94,215,0.3);
+padding:12px 20px;
+border-radius:10px;
+display:inline-block;
+margin:10px;
 }
 
-.btn:hover{
-background:#084298;
-transform:translateY(-4px);
-}
-
-/* SECTION */
-
-.section{
-padding:80px 20px;
-}
-
-.wrap{
-max-width:1200px;
-margin:auto;
-}
-
-.section-title{
-text-align:center;
-font-size:38px;
-margin-bottom:50px;
-}
-
-/* SERVICES */
-
+/* Services */
+.section{padding:60px 20px}
+.wrap{max-width:1200px;margin:auto}
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.card{
-background:white;
-padding:35px 25px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 8px 25px rgba(0,0,0,0.08);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-8px);
-}
-
-.card i{
-font-size:45px;
-margin-bottom:15px;
-color:#0b5ed7;
-}
-
-.card h3{
-font-size:24px;
-margin-bottom:10px;
-}
-
-/* PROJECT GALLERY */
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:20px;
 }
+.card{
+padding:25px;
+border-radius:15px;
+box-shadow:0 6px 20px rgba(0,0,0,0.1);
+transition:.3s;
+}
+.card:hover{transform:translateY(-5px)}
 
-.gallery img{
-width:100%;
-height:240px;
-object-fit:cover;
-border-radius:18px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:0.3s;
+/* Gallery Slider */
+.slider{
+overflow:hidden;
+}
+.slide-track{
+display:flex;
+animation:scroll 20s linear infinite;
+}
+.slide-track img{
+height:220px;
+margin:10px;
+border-radius:12px;
+}
+@keyframes scroll{
+0%{transform:translateX(0)}
+100%{transform:translateX(-50%)}
 }
 
-.gallery img:hover{
-transform:scale(1.03);
-}
-
-/* ABOUT */
-
-.about{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:40px;
-align-items:center;
-}
-
-.about img{
-width:100%;
-border-radius:20px;
-}
-
-.about-text h2{
-font-size:38px;
-margin-bottom:20px;
-}
-
-.about-text p{
-line-height:1.9;
-color:#475569;
-}
-
-/* CONTACT */
-
-.contact-box{
-background:white;
-padding:40px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 8px 25px rgba(0,0,0,0.08);
-}
-
-.contact-box p{
-margin:15px 0;
-font-size:18px;
-}
-
-/* FLOATING BUTTONS */
-
+/* Floating Buttons */
 .float-wa{
 position:fixed;
 bottom:20px;
 right:20px;
-width:60px;
-height:60px;
 background:#25D366;
 color:white;
-display:flex;
-justify-content:center;
-align-items:center;
+font-size:22px;
+padding:15px;
 border-radius:50%;
-font-size:28px;
 z-index:999;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
-
-.social{
+.float-social{
 position:fixed;
 left:20px;
 bottom:20px;
 display:flex;
 flex-direction:column;
-gap:12px;
-z-index:999;
+gap:10px;
 }
-
-.social a{
-width:50px;
-height:50px;
+.float-social a{
 background:#0b5ed7;
 color:white;
-display:flex;
-justify-content:center;
-align-items:center;
+padding:12px;
 border-radius:50%;
-font-size:22px;
 }
 
-/* FOOTER */
-
-footer{
-background:#0f172a;
+/* Chat Bot */
+.chatbot{
+position:fixed;
+bottom:90px;
+right:20px;
+width:280px;
+background:white;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+border-radius:10px;
+display:none;
+}
+.chat-header{
+background:#0b5ed7;
 color:white;
-padding:40px 20px;
+padding:10px;
+}
+.chat-body{
+padding:10px;
+height:200px;
+overflow:auto;
+}
+.chat-input{
+display:flex;
+}
+.chat-input input{
+flex:1;padding:8px;border:none;border-top:1px solid #ddd;
+}
+.chat-input button{
+background:#198754;color:white;border:none;padding:8px;
+}
+
+/* Footer */
+footer{
+background:#111;
+color:white;
+padding:20px;
 text-align:center;
-margin-top:50px;
 }
-
-footer a{
-color:#93c5fd;
-margin:0 10px;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.hero-wrap{
-flex-direction:column;
-}
-
-.side-img{
-width:100%;
-height:280px;
-}
-
-.hero-center h1{
-font-size:34px;
-}
-
-.hero-center p{
-font-size:17px;
-}
-
-.logo{
-font-size:22px;
-}
-
-.menu{
-justify-content:center;
-margin-top:10px;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
-
 <div class="nav">
-
-<div class="logo">
-Tousif Enterprise
-</div>
+<h2>M/S Tousif Power Solutions</h2>
 
 <div class="menu">
-
 <a href="#home">Home</a>
 <a href="#services">Services</a>
 <a href="#gallery">Projects</a>
-<a href="#about">About</a>
 <a href="#contact">Contact</a>
 
+<a href="https://wa.me/918250687140?text=Hello, আমি Electrical Service নিতে চাই">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
 </div>
-
 </div>
-
 </header>
 
 <!-- HERO -->
-
 <section class="hero" id="home">
+<h1>Professional Electrical Solutions</h1>
+<p>HT • LT • Transformer • Wiring • Maintenance</p>
 
-<div class="hero-wrap">
-
-<!-- LEFT IMAGE -->
-<img src="images/left.jpeg" class="side-img" alt="Electrical Work">
-
-<!-- CENTER -->
-
-<div class="hero-center">
-
-<h1>
-Professional Electrical Solutions
-</h1>
-
-<p>
-HT • LT • Transformer • House Wiring • Maintenance
-</p>
-
-<a class="btn" href="https://wa.me/918250687140?text=Hello%20Tousif%20Enterprise,%20I%20Need%20Electrical%20Service">
-Book on WhatsApp
-</a>
-
-</div>
-
-<!-- RIGHT IMAGE -->
-
-<img src="images/right.jpeg" class="side-img" alt="Electrical Service">
-
-</div>
-
+<a class="btn" href="https://wa.me/918250687140?text=Hello, আমি Electrical Service নিতে চাই">Book on WhatsApp</a>
 </section>
 
 <!-- SERVICES -->
-
 <section class="section" id="services">
-
 <div class="wrap">
-
-<h2 class="section-title">
-Our Services
-</h2>
+<h2>Our Services</h2>
 
 <div class="grid">
-
-<div class="card">
-<i class="fa-solid fa-bolt"></i>
-<h3>HT Work</h3>
-<p>Professional HT Electrical Work.</p>
+<div class="card"><i class="fa fa-bolt"></i><h3>HT Work</h3></div>
+<div class="card"><i class="fa fa-plug"></i><h3>LT Work</h3></div>
+<div class="card"><i class="fa fa-charging-station"></i><h3>Transformer</h3></div>
+<div class="card"><i class="fa fa-house"></i><h3>House Wiring</h3></div>
+<div class="card"><i class="fa fa-screwdriver-wrench"></i><h3>Maintenance</h3></div>
 </div>
-
-<div class="card">
-<i class="fa-solid fa-plug"></i>
-<h3>LT Work</h3>
-<p>Reliable LT Electrical Services.</p>
 </div>
-
-<div class="card">
-<i class="fa-solid fa-charging-station"></i>
-<h3>Transformer</h3>
-<p>Transformer Installation & Repair.</p>
-</div>
-
-<div class="card">
-<i class="fa-solid fa-house"></i>
-<h3>House Wiring</h3>
-<p>Modern House Wiring Solutions.</p>
-</div>
-
-<div class="card">
-<i class="fa-solid fa-screwdriver-wrench"></i>
-<h3>Maintenance</h3>
-<p>Electrical Maintenance Support.</p>
-</div>
-
-<div class="card">
-<i class="fa-solid fa-industry"></i>
-<h3>Industrial Work</h3>
-<p>Industrial Electrical Projects.</p>
-</div>
-
-</div>
-
-</div>
-
 </section>
 
-<!-- PROJECT images -->
-
-<section class="section" id="images">
-
+<!-- GALLERY -->
+<section class="section" id="gallery">
 <div class="wrap">
+<h2>Projects Gallery</h2>
 
-<h2 class="section-title">
-Projects gallery
-</h2>
-
-<div class="images" id="imagesContainer">
-
-<!-- AUTO IMAGE ADD SYSTEM -->
+<div class="slider">
+<div class="slide-track">
 
 <img src="images/1.jpeg">
 <img src="images/2.jpeg">
-<img src="images/3.jpg">
+<img src="images/3.jpeg">
 <img src="images/4.jpeg">
 <img src="images/5.jpeg">
 <img src="images/6.jpeg">
-<img src="images/7.jpeg">
-<img src="images/8.jpeg">
-<img src="images/9.jpeg">
-<img src="images/10.jpeg">
 
 </div>
-
 </div>
-
-</section>
-
-<!-- ABOUT -->
-
-<section class="section" id="about">
-
-<div class="wrap about">
-
-<img src="images/about.jpg">
-
-<div class="about-text">
-
-<h2>
-About Tousif Enterprise
-</h2>
-
-<p>
-
-Tousif Enterprise is a professional electrical contractor company based in Malda, West Bengal. We provide HT, LT, Transformer, Wiring and Maintenance services with quality and safety.
-
-</p>
-
-<br>
-
-<a class="btn" href="tel:+918250687140">
-Call Now
-</a>
-
 </div>
-
-</div>
-
 </section>
 
 <!-- CONTACT -->
-
 <section class="section" id="contact">
-
 <div class="wrap">
-
-<h2 class="section-title">
-Contact Us
-</h2>
-
-<div class="contact-box">
-
+<h2>Contact</h2>
 <p>📍 Malda, West Bengal</p>
+<p>📞 8250687140</p>
+<p>✉ mdtousifali92@gmail.com</p>
 
-<p>📞 +91 8250687140</p>
-
-<p>✉️ mdtousifali92@gmail.com</p>
-
-<br>
-
-<a class="btn" href="https://wa.me/918250687140?text=Hello%20Tousif%20Enterprise">
-WhatsApp Booking
-</a>
-
+<a class="btn" href="https://wa.me/918250687140?text=Hello, আমি Electrical Service নিতে চাই">WhatsApp Booking</a>
 </div>
-
-</div>
-
 </section>
 
-<!-- FOOTER -->
-
 <footer>
+<p>Follow Us</p>
 
-<h3>Tousif Enterprise</h3>
-
-<br>
-
-<a href="https://instagram.com/x___boy___t_o_u_s_i_f___143">
-Instagram
-</a>
-
-|
-
-<a href="https://facebook.com/share/1C9yvEp9tA/">
-Facebook
-</a>
-
-|
-
-<a href="https://youtube.com/@aisecretsbangla">
-YouTube
-</a>
+<a href="https://instagram.com/x___boy___t_o_u_s_i_f___143">Instagram</a> |
+<a href="https://facebook.com/share/1C9yvEp9tA/">Facebook</a> |
+<a href="https://youtube.com/@aisecretsbangla">YouTube</a>
 
 <br><br>
-
-© 2026 Tousif Enterprise | All Rights Reserved
-
+© 2026 M/S Tousif Power Solutions
 </footer>
 
-<!-- FLOATING WHATSAPP -->
-
-<a class="float-wa" href="https://wa.me/918250687140">
-
+<!-- Floating WhatsApp -->
+<a class="float-wa" href="https://wa.me/918250687140?text=Hello, আমি Electrical Service নিতে চাই">
 <i class="fab fa-whatsapp"></i>
-
 </a>
 
-<!-- FLOATING SOCIAL -->
-
-<div class="social">
-
-<a href="https://instagram.com/x___boy___t_o_u_s_i_f___143">
-<i class="fab fa-instagram"></i>
-</a>
-
-<a href="https://facebook.com/share/1C9yvEp9tA/">
-<i class="fab fa-facebook"></i>
-</a>
-
-<a href="https://youtube.com/@aisecretsbangla">
-<i class="fab fa-youtube"></i>
-</a>
-
+<!-- Floating Social -->
+<div class="float-social">
+<a href="https://instagram.com/x___boy___t_o_u_s_i_f___143"><i class="fab fa-instagram"></i></a>
+<a href="https://facebook.com/share/1C9yvEp9tA/"><i class="fab fa-facebook"></i></a>
+<a href="https://youtube.com/@aisecretsbangla"><i class="fab fa-youtube"></i></a>
 </div>
+
+<!-- Chatbot -->
+<div class="chatbot" id="chatbox">
+<div class="chat-header">Electrical Help Bot</div>
+<div class="chat-body" id="chatBody"></div>
+<div class="chat-input">
+<input id="chatInput">
+<button onclick="sendChat()">Send</button>
+</div>
+</div>
+
+<script>
+function sendChat(){
+let msg=document.getElementById("chatInput").value;
+let body=document.getElementById("chatBody");
+
+body.innerHTML+="<p>আপনি: "+msg+"</p>";
+
+let reply="দয়া করে বিস্তারিত বলুন";
+
+if(msg.includes("HT")) reply="আমরা HT কাজ করি";
+if(msg.includes("LT")) reply="আমরা LT কাজ করি";
+if(msg.includes("Transformer")) reply="Transformer Installation করা হয়";
+if(msg.includes("Rate")) reply="Rate জানতে WhatsApp করুন";
+if(msg.includes("Contact")) reply="Call: 8250687140";
+
+body.innerHTML+="<p>Bot: "+reply+"</p>";
+}
+</script>
 
 </body>
 </html>
