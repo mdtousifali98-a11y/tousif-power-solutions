@@ -10,6 +10,8 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
 <style>
 
 *{
@@ -21,8 +23,9 @@ text-decoration:none;
 }
 
 body{
-background:#f5f7fb;
+background:linear-gradient(135deg,#f0f9ff,#eef2ff,#ecfeff);
 color:#111;
+overflow-x:hidden;
 }
 
 /* HEADER */
@@ -34,24 +37,29 @@ color:white;
 text-align:center;
 font-size:28px;
 font-weight:700;
+position:sticky;
+top:0;
+z-index:999;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 /* HERO */
 
 .hero{
-padding:80px 20px;
+padding:90px 20px;
 text-align:center;
-background:linear-gradient(135deg,#eef2ff,#ecfeff);
+background:linear-gradient(135deg,#dbeafe,#ecfeff);
 }
 
 .hero h1{
-font-size:45px;
+font-size:48px;
 margin-bottom:20px;
+color:#0f172a;
 }
 
 .hero p{
 font-size:20px;
-color:#444;
+color:#334155;
 }
 
 /* SECTION */
@@ -70,19 +78,24 @@ margin:auto;
 .details{
 background:white;
 padding:40px;
-border-radius:20px;
-box-shadow:0 6px 20px rgba(0,0,0,0.08);
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
 line-height:2;
 font-size:18px;
 }
 
 .details h2{
 margin-bottom:20px;
-font-size:35px;
+font-size:36px;
+color:#0f172a;
 }
 
 .details ul{
 padding-left:25px;
+}
+
+.details li{
+margin-bottom:10px;
 }
 
 /* GALLERY */
@@ -98,7 +111,7 @@ gap:20px;
 width:100%;
 height:240px;
 object-fit:cover;
-border-radius:15px;
+border-radius:18px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
 transition:0.3s;
 }
@@ -111,26 +124,123 @@ transform:scale(1.03);
 
 .btn{
 display:inline-block;
-margin-top:40px;
-padding:14px 28px;
+margin-top:25px;
+padding:15px 30px;
 background:#0b5ed7;
 color:white;
-border-radius:10px;
+border-radius:12px;
 font-weight:600;
+transition:0.3s;
+box-shadow:0 5px 15px rgba(11,94,215,0.3);
 }
 
 .btn:hover{
 background:#084298;
+transform:translateY(-4px);
+}
+
+/* CONTACT BOX */
+
+.contact-box{
+margin-top:50px;
+padding:35px;
+border-radius:20px;
+background:linear-gradient(135deg,#0b5ed7,#198754);
+color:white;
+text-align:center;
+box-shadow:0 8px 25px rgba(0,0,0,0.15);
+}
+
+.contact-box h2{
+margin-bottom:15px;
+font-size:32px;
+}
+
+.contact-box p{
+font-size:18px;
+margin-bottom:20px;
+}
+
+/* SOCIAL */
+
+.social{
+margin-top:35px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.social a{
+width:55px;
+height:55px;
+background:white;
+color:#0b5ed7;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+font-size:24px;
+transition:0.3s;
+}
+
+.social a:hover{
+transform:translateY(-5px);
+}
+
+/* FLOATING WHATSAPP */
+
+.float-wa{
+position:fixed;
+right:20px;
+bottom:20px;
+width:65px;
+height:65px;
+background:#25D366;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+font-size:32px;
+z-index:999;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
 }
 
 /* FOOTER */
 
 footer{
 margin-top:60px;
-background:#111827;
+background:#0f172a;
 color:white;
-padding:30px;
+padding:35px;
 text-align:center;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:34px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+.details{
+padding:25px;
+}
+
+.details h2{
+font-size:28px;
+}
+
+.contact-box h2{
+font-size:26px;
+}
+
 }
 
 </style>
@@ -173,7 +283,7 @@ Our HT Line Services
 
 <p>
 
-আমরা Professional ভাবে HT লাইনের সব ধরনের কাজ করে থাকি।
+We provide professional HT electrical line construction and maintenance services.
 
 </p>
 
@@ -181,11 +291,11 @@ Our HT Line Services
 
 <ul>
 
-<li>HT Pole Erection (পুল গাড়া)</li>
+<li>HT Pole Erection</li>
 
 <li>PCC Pole Standing</li>
 
-<li>Stay Set Installation (স্টে লাগানো)</li>
+<li>Stay Set Installation</li>
 
 <li>Clamp & Bracket Setup</li>
 
@@ -221,9 +331,9 @@ Our HT Line Services
 
 <li>V Cross Arm Setup</li>
 
-<li>লাইন মেরামত ও Fault Repair</li>
+<li>Fault Repair Service</li>
 
-<li>লাইন শিফটিং ও নতুন লাইন বসানো</li>
+<li>Line Shifting & New Line Installation</li>
 
 <li>Industrial HT Connection Support</li>
 
@@ -235,9 +345,31 @@ Our HT Line Services
 
 <p>
 
-আমরা নিরাপদ ও professional ভাবে HT লাইনের কাজ সম্পূর্ণ করি।
+We complete all HT electrical work safely and professionally.
 
 </p>
+
+<!-- CONTACT BOX -->
+
+<div class="contact-box">
+
+<h2>
+Need HT Electrical Service?
+</h2>
+
+<p>
+
+Contact us now for professional electrical solutions.
+
+</p>
+
+<a class="btn" href="https://wa.me/918250687140?text=Hello%20M/S%20Tousif%20Power%20Solutions,%20I%20need%20HT%20Electrical%20Service">
+
+Contact on WhatsApp
+
+</a>
+
+</div>
 
 <!-- GALLERY -->
 
@@ -255,7 +387,6 @@ HT Work Gallery
 
 <img src="images/14.jpeg">
 
-
 </div>
 
 <center>
@@ -268,6 +399,24 @@ Back To Home
 
 </center>
 
+<!-- SOCIAL -->
+
+<div class="social">
+
+<a href="https://instagram.com/x___boy___t_o_u_s_i_f___143">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://facebook.com/share/1C9yvEp9tA/">
+<i class="fab fa-facebook"></i>
+</a>
+
+<a href="https://youtube.com/@aisecretsbangla">
+<i class="fab fa-youtube"></i>
+</a>
+
+</div>
+
 </div>
 
 </div>
@@ -279,6 +428,14 @@ Back To Home
 © 2026 M/S Tousif Power Solutions
 
 </footer>
+
+<!-- FLOATING WHATSAPP -->
+
+<a class="float-wa" href="https://wa.me/918250687140?text=Hello%20M/S%20Tousif%20Power%20Solutions,%20I%20need%20HT%20Electrical%20Service">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
 
 </body>
 
