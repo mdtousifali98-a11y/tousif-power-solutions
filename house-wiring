@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>House Wiring | M/S Tousif Power Solutions</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+text-decoration:none;
+}
+
+body{
+background:linear-gradient(135deg,#f0f9ff,#eef2ff,#ecfeff);
+color:#111;
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(90deg,#0b5ed7,#198754);
+padding:18px;
+color:white;
+text-align:center;
+font-size:28px;
+font-weight:700;
+position:sticky;
+top:0;
+z-index:999;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* HERO */
+
+.hero{
+padding:90px 20px;
+text-align:center;
+background:linear-gradient(135deg,#dbeafe,#ecfeff);
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:20px;
+color:#0f172a;
+}
+
+.hero p{
+font-size:20px;
+color:#334155;
+}
+
+/* SECTION */
+
+.section{
+padding:60px 20px;
+}
+
+.wrap{
+max-width:1200px;
+margin:auto;
+}
+
+/* DETAILS */
+
+.details{
+background:white;
+padding:40px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+line-height:2;
+font-size:18px;
+}
+
+.details h2{
+margin-bottom:20px;
+font-size:36px;
+color:#0f172a;
+}
+
+.details ul{
+padding-left:25px;
+}
+
+.details li{
+margin-bottom:10px;
+}
+
+/* GALLERY */
+
+.gallery{
+margin-top:50px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+height:240px;
+object-fit:cover;
+border-radius:18px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.03);
+}
+
+/* BUTTON */
+
+.btn{
+display:inline-block;
+margin-top:25px;
+padding:15px 30px;
+background:#0b5ed7;
+color:white;
+border-radius:12px;
+font-weight:600;
+transition:0.3s;
+box-shadow:0 5px 15px rgba(11,94,215,0.3);
+}
+
+.btn:hover{
+background:#084298;
+transform:translateY(-4px);
+}
+
+/* CONTACT BOX */
+
+.contact-box{
+margin-top:50px;
+padding:35px;
+border-radius:20px;
+background:linear-gradient(135deg,#0b5ed7,#198754);
+color:white;
+text-align:center;
+box-shadow:0 8px 25px rgba(0,0,0,0.15);
+}
+
+.contact-box h2{
+margin-bottom:15px;
+font-size:32px;
+}
+
+.contact-box p{
+font-size:18px;
+margin-bottom:20px;
+}
+
+/* SOCIAL */
+
+.social{
+margin-top:35px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.social a{
+width:55px;
+height:55px;
+background:white;
+color:#0b5ed7;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+font-size:24px;
+transition:0.3s;
+}
+
+.social a:hover{
+transform:translateY(-5px);
+}
+
+/* FLOATING WHATSAPP */
+
+.float-wa{
+position:fixed;
+right:20px;
+bottom:20px;
+width:65px;
+height:65px;
+background:#25D366;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+font-size:32px;
+z-index:999;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+
+footer{
+margin-top:60px;
+background:#0f172a;
+color:white;
+padding:35px;
+text-align:center;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:34px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+.details{
+padding:25px;
+}
+
+.details h2{
+font-size:28px;
+}
+
+.contact-box h2{
+font-size:26px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+M/S Tousif Power Solutions
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>House Wiring Services</h1>
+
+<p>
+
+Professional Home, Office & Building Electrical Wiring Solutions
+
+</p>
+
+</section>
+
+<!-- DETAILS -->
+
+<section class="section">
+
+<div class="wrap">
+
+<div class="details">
+
+<h2>
+Our House Wiring Services
+</h2>
+
+<p>
+
+We provide safe and professional electrical wiring services for homes, shops, offices and buildings.
+
+</p>
+
+<br>
+
+<ul>
+
+<li>Complete House Wiring</li>
+
+<li>New Building Wiring</li>
+
+<li>Old House Rewiring</li>
+
+<li>Concealed Wiring Work</li>
+
+<li>Open Wiring Setup</li>
+
+<li>Main Switch Installation</li>
+
+<li>MCB Distribution Board Setup</li>
+
+<li>Electrical Panel Installation</li>
+
+<li>Fan Installation</li>
+
+<li>LED Light Installation</li>
+
+<li>Tube Light Setup</li>
+
+<li>Switch Board Installation</li>
+
+<li>Socket Installation</li>
+
+<li>AC Wiring Connection</li>
+
+<li>Water Pump Wiring</li>
+
+<li>Kitchen Electrical Wiring</li>
+
+<li>Bathroom Electrical Wiring</li>
+
+<li>Inverter Wiring</li>
+
+<li>Earthing Work</li>
+
+<li>Short Circuit Repair</li>
+
+<li>Electrical Fault Repair</li>
+
+<li>Shop Wiring Service</li>
+
+<li>Office Wiring Setup</li>
+
+<li>Commercial Wiring Service</li>
+
+<li>Maintenance & Repair Service</li>
+
+</ul>
+
+<br>
+
+<p>
+
+We complete all wiring work safely with quality materials and professional finishing.
+
+</p>
+
+<!-- CONTACT BOX -->
+
+<div class="contact-box">
+
+<h2>
+Need House Wiring Service?
+</h2>
+
+<p>
+
+Contact us now for professional house wiring solutions.
+
+</p>
+
+<a class="btn" href="https://wa.me/918250687140?text=Hello%20M/S%20Tousif%20Power%20Solutions,%20I%20need%20House%20Wiring%20Service">
+
+Contact on WhatsApp
+
+</a>
+
+</div>
+
+<!-- GALLERY -->
+
+<h2 style="margin-top:60px">
+House Wiring Gallery
+</h2>
+
+<div class="gallery">
+
+<img src="images/23.jpeg">
+
+<img src="images/24.jpeg">
+
+<img src="images/25.jpeg">
+
+<img src="images/26.jpeg">
+
+</div>
+
+<center>
+
+<a class="btn" href="index.html">
+
+Back To Home
+
+</a>
+
+</center>
+
+<!-- SOCIAL -->
+
+<div class="social">
+
+<a href="https://instagram.com/x___boy___t_o_u_s_i_f___143">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://facebook.com/share/1C9yvEp9tA/">
+<i class="fab fa-facebook"></i>
+</a>
+
+<a href="https://youtube.com/@aisecretsbangla">
+<i class="fab fa-youtube"></i>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 M/S Tousif Power Solutions
+
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+
+<a class="float-wa" href="https://wa.me/918250687140?text=Hello%20M/S%20Tousif%20Power%20Solutions,%20I%20need%20House%20Wiring%20Service">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+</body>
+
+</html>
