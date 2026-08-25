@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
 <meta charset="UTF-8">
 
@@ -28,10 +31,20 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
-html{scroll-behavior:smooth}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+}
+
+html{
+scroll-behavior:smooth;
+}
 
 /* Header */
+
 header{
 background:linear-gradient(90deg,#0b5ed7,#198754);
 color:white;
@@ -39,6 +52,7 @@ position:sticky;
 top:0;
 z-index:999;
 }
+
 .nav{
 display:flex;
 justify-content:space-between;
@@ -47,14 +61,61 @@ padding:15px;
 max-width:1200px;
 margin:auto;
 }
-.menu a{margin:0 10px;font-weight:500}
+
+.menu a{
+margin:0 10px;
+font-weight:500;
+color:white;
+}
 
 /* Hero */
+
 .hero{
-padding:100px 20px;
+padding:80px 20px;
 background:linear-gradient(135deg,#eef2ff,#ecfeff);
 text-align:center;
 }
+
+.hero h1{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.hero p{
+margin:8px 0;
+}
+
+/* Service Closed Notice */
+
+.closed-notice{
+max-width:750px;
+margin:25px auto;
+padding:22px 20px;
+background:#fff3cd;
+color:#664d03;
+border:2px solid #ffc107;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.closed-notice .icon{
+font-size:28px;
+color:#dc3545;
+margin-bottom:8px;
+}
+
+.closed-notice h2{
+color:#dc3545;
+font-size:22px;
+margin-bottom:8px;
+}
+
+.closed-notice p{
+line-height:1.7;
+}
+
+/* Button */
+
 .btn{
 background:#0b5ed7;
 color:white;
@@ -62,43 +123,73 @@ padding:12px 20px;
 border-radius:10px;
 display:inline-block;
 margin:10px;
+text-decoration:none;
 }
 
 /* Services */
-.section{padding:60px 20px}
-.wrap{max-width:1200px;margin:auto}
+
+.section{
+padding:60px 20px;
+}
+
+.wrap{
+max-width:1200px;
+margin:auto;
+}
+
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 }
+
 .card{
 padding:25px;
 border-radius:15px;
 box-shadow:0 6px 20px rgba(0,0,0,0.1);
 transition:.3s;
+background:white;
 }
-.card:hover{transform:translateY(-5px)}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card i{
+margin-bottom:8px;
+}
 
 /* Gallery Slider */
+
 .slider{
 overflow:hidden;
 }
+
 .slide-track{
 display:flex;
 animation:scroll 20s linear infinite;
 }
+
 .slide-track img{
 height:220px;
 margin:10px;
 border-radius:12px;
 }
+
 @keyframes scroll{
-0%{transform:translateX(0)}
-100%{transform:translateX(-50%)}
+
+0%{
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(-50%);
+}
+
 }
 
 /* Floating Buttons */
+
 .float-wa{
 position:fixed;
 bottom:20px;
@@ -109,7 +200,9 @@ font-size:22px;
 padding:15px;
 border-radius:50%;
 z-index:999;
+text-decoration:none;
 }
+
 .float-social{
 position:fixed;
 left:20px;
@@ -118,14 +211,17 @@ display:flex;
 flex-direction:column;
 gap:10px;
 }
+
 .float-social a{
 background:#0b5ed7;
 color:white;
 padding:12px;
 border-radius:50%;
+text-decoration:none;
 }
 
 /* Chat Bot */
+
 .chatbot{
 position:fixed;
 bottom:90px;
@@ -135,70 +231,150 @@ background:white;
 box-shadow:0 5px 20px rgba(0,0,0,0.2);
 border-radius:10px;
 display:none;
+z-index:1000;
 }
+
 .chat-header{
 background:#0b5ed7;
 color:white;
 padding:10px;
 }
+
 .chat-body{
 padding:10px;
 height:200px;
 overflow:auto;
 }
+
 .chat-input{
 display:flex;
 }
+
 .chat-input input{
-flex:1;padding:8px;border:none;border-top:1px solid #ddd;
+flex:1;
+padding:8px;
+border:none;
+border-top:1px solid #ddd;
 }
+
 .chat-input button{
-background:#198754;color:white;border:none;padding:8px;
+background:#198754;
+color:white;
+border:none;
+padding:8px;
 }
 
 /* Footer */
+
 footer{
 background:#111;
 color:white;
 padding:20px;
 text-align:center;
 }
+
+footer a{
+color:#0b5ed7;
+}
+
 </style>
+
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header>
+
 <div class="nav">
+
 <h2>TOUSIF ENTERPRISE</h2>
 
 <div class="menu">
+
 <a href="#home">Home</a>
+
 <a href="#services">Services</a>
+
 <a href="#gallery">Projects</a>
+
 <a href="#contact">Contact</a>
 
 <a href="https://wa.me/918250687140?text=Hello, আমি Electrical Service নিতে চাই">
+
 <i class="fa-brands fa-whatsapp"></i>
+
 </a>
+
 </div>
+
 </div>
+
 </header>
 
+
 <!-- HERO -->
+
 <section class="hero" id="home">
+
 <h1>Professional Electrical Solutions</h1>
+
 <p>HT • LT • Transformer • Wiring • Maintenance</p>
 
-<a class="btn" href="https://wa.me/918250687140?text=Hello, আমি Electrical Service নিতে চাই">Book on WhatsApp</a>
+
+<!-- SERVICE CLOSED NOTICE -->
+
+<div class="closed-notice">
+
+<div class="icon">
+<i class="fa-solid fa-circle-exclamation"></i>
+</div>
+
+<h2>Service Temporarily Closed</h2>
+
+<p>
+Currently, all our Electrical Services are temporarily closed.
+</p>
+
+<p>
+Our HT, LT, Transformer, House Wiring and Maintenance services
+are currently unavailable.
+</p>
+
+<p>
+Services will resume in the future. Updates will be provided
+on this website.
+</p>
+
+<strong>
+Thank you for your patience and understanding.
+</strong>
+
+</div>
+
+
+<a class="btn"
+href="https://wa.me/918250687140?text=Hello, আমি Electrical Service নিতে চাই">
+
+Book on WhatsApp
+
+</a>
+
 </section>
 
+
 <!-- SERVICES -->
+
 <section class="section" id="services">
+
 <div class="wrap">
+
 <h2>Our Services</h2>
 
 <div class="grid">
+
+
 <a href="ht-work.html" style="text-decoration:none;color:inherit;">
 
 <div class="card">
@@ -210,7 +386,8 @@ text-align:center;
 </div>
 
 </a>
-  
+
+
 <a href="lt-work.html" style="text-decoration:none;color:inherit;">
 
 <div class="card">
@@ -222,7 +399,8 @@ text-align:center;
 </div>
 
 </a>
-  
+
+
 <a href="transformer.html" style="text-decoration:none;color:inherit;">
 
 <div class="card">
@@ -234,6 +412,7 @@ text-align:center;
 </div>
 
 </a>
+
 
 <a href="house-wiring.html" style="text-decoration:none;color:inherit;">
 
@@ -247,6 +426,7 @@ text-align:center;
 
 </a>
 
+
 <a href="maintenance.html" style="text-decoration:none;color:inherit;">
 
 <div class="card">
@@ -259,93 +439,209 @@ text-align:center;
 
 </a>
 
+
 </div>
+
 </div>
+
 </section>
 
+
 <!-- GALLERY -->
+
 <section class="section" id="gallery">
+
 <div class="wrap">
+
 <h2>Projects Gallery</h2>
 
 <div class="slider">
+
 <div class="slide-track">
 
 <img src="images/1.jpeg">
+
 <img src="images/2.jpeg">
+
 <img src="images/3.jpeg">
+
 <img src="images/4.jpeg">
+
 <img src="images/5.jpeg">
+
 <img src="images/6.jpeg">
 
 </div>
+
 </div>
+
 </div>
+
 </section>
+
 
 <!-- CONTACT -->
+
 <section class="section" id="contact">
+
 <div class="wrap">
+
 <h2>Contact</h2>
+
 <p>📍 Malda, West Bengal</p>
+
 <p>📞 8250687140</p>
+
 <p>✉ mdtousifali92@gmail.com</p>
 
-<a class="btn" href="https://wa.me/918250687140?text=Hello, আমি Electrical Service নিতে চাই">WhatsApp Booking</a>
-</div>
-</section>
 
-<footer>
-<p>Follow Us</p>
+<a class="btn"
+href="https://wa.me/918250687140?text=Hello, আমি Electrical Service নিতে চাই">
 
-<a href="https://instagram.com/x___boy___t_o_u_s_i_f___143">Instagram</a> |
-<a href="https://facebook.com/share/1C9yvEp9tA/">Facebook</a> |
-<a href="https://youtube.com/@aisecretsbangla">YouTube</a>
+WhatsApp Booking
 
-<br><br>
-© 2026 Electrical Malda
-</footer>
-
-<!-- Floating WhatsApp -->
-<a class="float-wa" href="https://wa.me/918250687140?text=Hello, আমি Electrical Service নিতে চাই">
-<i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- Floating Social -->
-<div class="float-social">
-<a href="https://instagram.com/x___boy___t_o_u_s_i_f___143"><i class="fab fa-instagram"></i></a>
-<a href="https://facebook.com/share/1C9yvEp9tA/"><i class="fab fa-facebook"></i></a>
-<a href="https://youtube.com/@aisecretsbangla"><i class="fab fa-youtube"></i></a>
 </div>
 
-<!-- Chatbot -->
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>Follow Us</p>
+
+<a href="https://instagram.com/x___boy___t_o_u_s_i_f___143">
+Instagram
+</a>
+
+|
+
+<a href="https://facebook.com/share/1C9yvEp9tA/">
+Facebook
+</a>
+
+|
+
+<a href="https://youtube.com/@aisecretsbangla">
+YouTube
+</a>
+
+<br>
+<br>
+
+© 2026 Electrical Malda
+
+</footer>
+
+
+<!-- FLOATING WHATSAPP -->
+
+<a class="float-wa"
+href="https://wa.me/918250687140?text=Hello, আমি Electrical Service নিতে চাই">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+
+<!-- FLOATING SOCIAL -->
+
+<div class="float-social">
+
+<a href="https://instagram.com/x___boy___t_o_u_s_i_f___143">
+
+<i class="fab fa-instagram"></i>
+
+</a>
+
+<a href="https://facebook.com/share/1C9yvEp9tA/">
+
+<i class="fab fa-facebook"></i>
+
+</a>
+
+<a href="https://youtube.com/@aisecretsbangla">
+
+<i class="fab fa-youtube"></i>
+
+</a>
+
+</div>
+
+
+<!-- CHATBOT -->
+
 <div class="chatbot" id="chatbox">
-<div class="chat-header">Electrical Help Bot</div>
-<div class="chat-body" id="chatBody"></div>
+
+<div class="chat-header">
+Electrical Help Bot
+</div>
+
+<div class="chat-body" id="chatBody">
+</div>
+
 <div class="chat-input">
+
 <input id="chatInput">
-<button onclick="sendChat()">Send</button>
+
+<button onclick="sendChat()">
+Send
+</button>
+
 </div>
+
 </div>
+
+
+<!-- CHATBOT SCRIPT -->
 
 <script>
+
 function sendChat(){
+
 let msg=document.getElementById("chatInput").value;
+
 let body=document.getElementById("chatBody");
+
 
 body.innerHTML+="<p>আপনি: "+msg+"</p>";
 
+
 let reply="দয়া করে বিস্তারিত বলুন";
 
-if(msg.includes("HT")) reply="আমরা HT কাজ করি";
-if(msg.includes("LT")) reply="আমরা LT কাজ করি";
-if(msg.includes("Transformer")) reply="Transformer Installation করা হয়";
-if(msg.includes("Rate")) reply="Rate জানতে WhatsApp করুন";
-if(msg.includes("Contact")) reply="Call: 8250687140";
+
+if(msg.includes("HT"))
+reply="বর্তমানে HT service temporarily closed আছে।";
+
+
+if(msg.includes("LT"))
+reply="বর্তমানে LT service temporarily closed আছে।";
+
+
+if(msg.includes("Transformer"))
+reply="বর্তমানে Transformer service temporarily closed আছে।";
+
+
+if(msg.includes("Rate"))
+reply="বর্তমানে service বন্ধ আছে। Service চালু হলে rate জানতে WhatsApp করুন।";
+
+
+if(msg.includes("Contact"))
+reply="Call: 8250687140";
+
 
 body.innerHTML+="<p>Bot: "+reply+"</p>";
+
+document.getElementById("chatInput").value="";
+
 }
+
 </script>
 
+
 </body>
+
 </html>
